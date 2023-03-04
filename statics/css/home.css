@@ -39,7 +39,7 @@ div#opc {
 
 div#img {
     background-color: var(--cor006);
-    background-image: url('../imagens/ifpb-logo100.png');
+    background-image: url('../images/ifpb-logo100.png');
     background-repeat: no-repeat;
     background-position: center center;
     width: 150px;
