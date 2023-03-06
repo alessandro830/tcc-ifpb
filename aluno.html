@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/aluno.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img src="images/ifpb-horizontal200.png" alt="logo horizontal do ifpb">
+        <div class="nav_buttons">
+            <a href="#"><button>Justificativas/Faltas</button></a>
+            <a href="index.html"><button>Sair</button></a>
+        </div>
+    </header>
+    <main>
+        <section class="secao_almoco">
+            <form action="regis_almoco.php" method="post">
+                <div class="dias_semana">
+                    <div class="dia">
+                        <label for="segunda">Segunda-Feira</label>
+                        <input type="checkbox" name="segunda" id="segunda" class="checkbox">
+                    </div>
+                    <div class="dia">
+                        <label for="terca">Terça-Feira</label>
+                        <input type="checkbox" name="terca" id="terca" class="checkbox">
+                    </div>
+                    <div class="dia">
+                        <label for="quarta">Quarta-Feira</label>
+                        <input type="checkbox" name="quarta" id="quarta" class="checkbox">
+                    </div>
+                    <div class="dia">
+                        <label for="">-Feira</label>
+                        <input type="checkbox" name="" id="" class="checkbox">
+                    </div>
+                    <div class="dia">
+                        <label for="">-Feira</label>
+                        <input type="checkbox" name="" id="" class="checkbox">
+                    </div>
+                </div>
+                <div class="button_save">
+                    <input type="submit" value="Salvar">
+                </div>    
+            </form>
+        </section>
+    </main>
+</body>
+</html>

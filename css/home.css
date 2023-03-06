@@ -47,21 +47,19 @@ div#img {
     border-radius: 50%;
 }
 
-button, a {
+#div_links button{
     background-color: #ffffff;
+    border: 1px solid var(--cor001);
     padding: 10px;
     width: 250px;
     margin: 10px 0px;
     border-radius: 20px;
-    transition: all 0.3s;
-}
-
-button {
-    border: 1px solid var(--cor001);
     font-size: 17px;
+    transition: all 0.3s;
+    cursor: pointer;
 }
 
-button:hover {
+#div_links button:hover {
     border: 1px solid var(--cor002);
     background-color: var(--cor001);
     color: white;
