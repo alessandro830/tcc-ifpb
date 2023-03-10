@@ -35,7 +35,6 @@ button {
 }
 
 button:hover {
-    border: 1.5px solid var(--cor002);
     background-color: var(--cor001);
     color: white;
     box-shadow: 0px 0px 7px var(--cor002);
