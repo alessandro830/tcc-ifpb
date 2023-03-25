@@ -16,6 +16,6 @@ create table alunos(
     just_falt varchar(500),
     matricula bigint primary key,
     nome varchar(100) unique,
-    senha varchar(50)
+    senha varchar(50) note null
     );
  
