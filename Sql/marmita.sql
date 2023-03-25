@@ -3,7 +3,8 @@ create schema marmita;
 	  falta_aluno bigint,
     nome varchar(100) unique,
     matricula bigint primary key,
-    quant_quent int not null
+    quant_quent int not null,
+    senha varchar(50) not null 
 );
 
 create table alunos(
@@ -16,6 +17,6 @@ create table alunos(
     just_falt varchar(500),
     matricula bigint primary key,
     nome varchar(100) unique,
-    senha varchar(50) note null
+    senha varchar(50) not null
     );
  
