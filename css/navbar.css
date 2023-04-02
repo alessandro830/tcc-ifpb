@@ -17,7 +17,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0px 0px 5px var(--cor001);
+    background-color: #ffffff;
     border-bottom: 1px solid var(--cor002);
     padding: 30px 50px;
 }

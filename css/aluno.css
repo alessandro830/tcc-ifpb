@@ -2,12 +2,13 @@
 
 :root {
     --cor001: #44A64A;
-    --cor002: #2A8C39;
+    --cor002: #2A8C39;  
     --cor003: #D93644;
     --cor004: #403837;
     --cor005: #0D0D0D;
-    --cor006: #e6e6e6;
 }
+
+/* inicio da estilização gerais */
 
 * {
     padding: 0px;
@@ -16,23 +17,154 @@
 }
 
 body {
-    width: 100vw;
-    height: 97vh;
-    background-color: var(--cor006);
+    background-color: #eaeaea;
 }
 
 main {
-    margin: auto;
-    width: 800px;
-    border: 2px solid var(--cor001);
+    margin: 0 auto;
+    width: 70vw;
+    background-color: #ffffff;
+    border: 1px solid var(--cor001);
     border-top: none;
-    border-radius: 0px 0px 20px 20px;
-    box-shadow: 0px 0px 5px var(--cor002);
+    box-shadow: 0px 2px 10px #44a64b61;
 }
 
 section {
-    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 97vh;
 }
+
+h1 {
+    margin-top: 20px;
+    color: var(--cor005);
+    font-size: 2em;
+    font-weight: normal;
+}
+
+/* inicio da estilização gerais */
+
+/* inicio da estilização da seção dos cardápios */
+
+.slider {
+    margin-top: 40px;
+    width: 80%;
+    height: 450px;
+    overflow: hidden;
+}
+
+.slides {
+    width: 500%;
+    height: 450px;
+    display: flex;
+}
+
+.slides input[type=radio]{
+    display: none;
+}
+
+.slide {
+    width: 20%;
+    transition: 1s;
+}
+
+.slide img {
+    width: 100%;
+    height: 450px;
+}
+
+.navegation-manual {
+    margin-top: -50px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid #2a8c3976;
+    padding: 8px;
+    width: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+
+.manual-btn:hover {
+    background-color: #2a8c3976;
+}
+
+#radio1:checked ~ #slide-first {
+    margin-left: 0;
+}
+
+#radio2:checked ~ #slide-first {
+    margin-left: -20%;
+}
+
+#radio3:checked ~ #slide-first {
+    margin-left: -40%;
+}
+
+#radio4:checked ~ #slide-first {
+    margin-left: -60%;
+}
+
+.div_download {
+    width: 100%;
+    padding-top: 40px;
+}
+
+.btn_download {
+    position: relative;
+    display: inline-flex;
+    margin-left: 50px;
+    padding: 5px 10px 0 10px;
+    border-bottom: 1px solid #0d0d0d4c;
+    transition: all .5s;
+}
+
+.btn_download:hover {
+    border-bottom: 1px solid var(--cor001);
+}
+
+.btn_download:hover ul {
+    display: block;
+}
+
+.btn_download ul {
+    display: none;
+    top: 105%;
+    width: 150px;
+    position: absolute;
+    background-color: transparent;
+    border: 1px solid #eeeeee;
+    list-style: none;
+    box-shadow: 0px 0px 5px #0d0d0d3e;
+}
+
+.btn_download ul li a {
+    display: block;
+}
+
+.btn_download ul li a {
+    padding: 10px 20px;
+    color: #0D0D0D;
+    text-decoration: none;
+    transition: all .5s;
+}
+
+.btn_download a:hover {
+    background-color: #eeeeee;
+}
+
+/* fim da estilização da seção dos cardápios */
+
+/* estilização da seção de marcar as quentinhas */
 
 .secao_quentinha {
     display: flex;
@@ -40,12 +172,6 @@ section {
     justify-content: space-evenly;
     flex-direction: column;
     height: 70vh;
-}
-
-.secao_quentinha h1 {
-    color: var(--cor005);
-    font-size: 2em;
-    font-weight: normal;
 }
 
 form, div.dias_semana, div.dia {
@@ -137,3 +263,5 @@ input.button_save:hover {
     background-color: var(--cor002);
     box-shadow: 0px 0px 10px #0d0d0d39;
 }
+
+/* fim da seção de marcar as quentinhas */

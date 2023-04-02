@@ -6,54 +6,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/aluno.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <script type="text/javascript" src="js/carrosel.js"></script>
     <title>Document</title>
 </head>
 <body>
     <header>
         <img src="images/ifpb-horizontal200.png" alt="logo horizontal do ifpb">
-        <nav>
-            <ul>
-                <li><a href="#secao_cardapio">Cardapio</a></li>
-                <li><a href="#secao_quentinha">Quentinhas</a></li>
-            </ul>
-        </nav>
         <div class="nav_buttons">
-            <a href="#"><button>Justificativas/Faltas</button></a>
+            <a href="falta_justificativa.html"><button>Justificativas/Faltas</button></a>
             <a href="index.html"><button>Sair</button></a>
         </div>
     </header>
     <main>
         <section id="secao_cardapio" class="secao_cardapio">
+
+            <h1>Cardápios</h1>
+
+            <div class="slider">
+                <div class="slides">
+
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio4">
+
+                    <div class="slide" id="slide-first">
+                        <img src="images/almoco001.PNG" alt="image do cardapio">
+                    </div>
+                    <div class="slide">
+                        <img src="images/almoco002.PNG" alt="image do cardapio">
+                    </div>
+                    <div class="slide">
+                        <img src="images/jantar001.PNG" alt="image do cardapio">
+                    </div>
+                    <div class="slide">
+                        <img src="images/jantar002.PNG" alt="image do cardapio">
+                    </div>
+
+                </div>
+
+                    <div class="navegation-manual">
+                        <label for="radio1" class="manual-btn"></label>
+                        <label for="radio2" class="manual-btn"></label>
+                        <label for="radio3" class="manual-btn"></label>
+                        <label for="radio4" class="manual-btn"></label>
+                    </div>
+
+            </div>
+
+            <div class="div_download">
+                <div class="btn_download">
+                    <span>Download das imagens</span>
+                    <ul>    
+                        <li><a href="images/almoco001.PNG" download>almoço 1</a></li>
+                        <li><a href="images/almoco002.PNG" download>almoço 2</a></li>
+                        <li><a href="images/jantar001.PNG" download>jantar 1</a></li>
+                        <li><a href="images/jantar002.PNG" download>jantar 2</a></li>
+                    </ul>
+                </div>
+            </div>
+
         </section>
         <section id="secao_quentinha" class="secao_quentinha">
+
             <h1>Marque sua quentinha!</h1>
             <form action="regis_quentinha.php" method="post">
-                <div class="dias_semana">
+
+            <div class="dias_semana">
+
                     <div class="dia">
                         <label for="segunda">Segunda-Feira</label>
                         <input type="checkbox" name="segunda" id="segunda" class="checkbox">
                     </div>
+
                     <div class="dia">
                         <label for="terca">Terça-Feira</label>
                         <input type="checkbox" name="terca" id="terca" class="checkbox">
                     </div>
+
                     <div class="dia">
                         <label for="quarta">Quarta-Feira</label>
                         <input type="checkbox" name="quarta" id="quarta" class="checkbox">
                     </div>
+
                     <div class="dia">
                         <label for="quinta">Quinta-Feira</label>
                         <input type="checkbox" name="quinta" id="quinta" class="checkbox">
                     </div>
+
                     <div class="dia">
                         <label for="sexta">Sexta-Feira</label>
                         <input type="checkbox" name="sexta" id="sexta" class="checkbox">
                     </div>
+
                 </div>
+
                 <div class="div_button">
                     <input class="button_save" type="submit" value="Salvar">
                 </div>    
+
             </form>
+
         </section>
     </main>
 </body>

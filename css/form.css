@@ -7,6 +7,7 @@
     --cor004: #403837;
     --cor005: #0D0D0D;
     --cor006: #e6e6e6;
+    --cor007: #f5f5f5;
 }
 
 * {
@@ -30,7 +31,7 @@ body, div#div_form, div#form {
 
 div#div_form {
     justify-content: space-evenly;
-    background-color: #ffffff;
+    background-color: var(--cor007);
     width: 800px;
     height: 400px;
     padding: 50px 10px 50px 10px;
@@ -95,7 +96,6 @@ div#form h1 {
 #form input[type=number]::-webkit-inner-spin-button { 
     -webkit-appearance: none;
     margin: 0px;
-    
 }
 
 #form input[type="submit"] {
