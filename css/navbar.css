@@ -11,6 +11,8 @@
 
 * {
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -25,7 +27,6 @@ header {
 button {
     background-color: transparent;
     padding: 15px 22px;
-    margin-left: 10px;
     border: 1.5px solid var(--cor002);
     border-radius: 10px;
     font-size: 17px;

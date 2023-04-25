@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+:root {
+    --cor001: #44A64A;
+    --cor002: #2A8C39;  
+    --cor003: #D93644;
+    --cor004: #403837;
+    --cor005: #0D0D0D;
+    --cor006: #e6e6e6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    width: 500px;
+    border-collapse: collapse;
+    position: relative;
+}
+
+caption {
+    padding: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+td, th {
+    border: 1px solid var(--cor002);
+    padding: 10px;
+}
+
+thead tr th {
+    position: sticky;
+    top: -1px;
+    background-color: var(--cor001);
+    color: #ffffff;
+}
+
+tr {
+    transition: all .2s;
+}
+
+tbody tr:nth-child(2n) {
+    background-color: #e6e6e67e;
+}
+
+tbody tr:hover {
+    background-color: #e6e6e6;
+}
