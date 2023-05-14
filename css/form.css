@@ -2,12 +2,11 @@
 
 :root {
     --cor001: #44A64A;
-    --cor002: #2A8C39;
+    --cor002: #2A8C39;  
     --cor003: #D93644;
     --cor004: #403837;
     --cor005: #0D0D0D;
     --cor006: #e6e6e6;
-    --cor007: #f5f5f5;
 }
 
 * {
@@ -31,7 +30,7 @@ body, div#div_form, div#form {
 
 div#div_form {
     justify-content: space-evenly;
-    background-color: var(--cor007);
+    background-color: #ffffff;
     width: 800px;
     height: 400px;
     padding: 50px 10px 50px 10px;

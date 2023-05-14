@@ -25,8 +25,8 @@ body {
 
 .div_justi {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     background-color: #ffffff;
     width: 650px;
@@ -51,22 +51,20 @@ body {
     flex-direction: column;
 }
 
-.div_justi input[type=text] {
-    margin: 5px 0 15px 0;
+.div_justi input[type="text"] {
     font-size: medium;
     background-color: var(--cor006);
-    width: 91.5%;
     border: none;
     padding: 10px 10px 10px 15px;
     border-radius: 20px;
-    transition: all 0.3s;
+    transition: all 0.3s ;
 }
 
-.div_justi input[type=text]:hover {
+.div_justi input[type="text"]:hover {
     box-shadow: inset 0px 0px 3px var(--cor002);
 }
 
-.div_justi input[type=text]:focus {
+.div_justi input[type="text"]:focus {
     outline: 0.5px solid var(--cor001);
     box-shadow: inset 0px 0px 5px var(--cor001);
 }
@@ -76,9 +74,10 @@ body {
 }
 
 .div_justi .label_arq {
+    margin: 15px auto;
     padding: 10px 20px;
     border-radius: 5px;
-    background-color: var(--cor001);
+    background-color: #44A64A;
     color: #ffffff;
     transition: all .3s;
 }
@@ -91,8 +90,7 @@ body {
     background-color: #ffffff;
     border: 1px solid var(--cor001);
     width: 100%;
-    padding: 10px;
-    margin: 15px 0px;
+    padding: 13px;
     border-radius: 20px;
     font-size: 17px;
     transition: all 0.3s;
