@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+:root {
+    --cor001: #44A64A;
+    --cor002: #2A8C39;  
+    --cor003: #D93644;
+    --cor004: #403837;
+    --cor005: #0D0D0D;
+    --cor006: #e6e6e6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+    background-color: var(--cor006)
+}
+
+.div_justi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 650px;
+    height: 300px;
+    padding: 50px 10px 50px 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #44a64b4e;
+    border: 1px solid var(--cor002);
+}
+
+.div_justi h1 {
+    color: var(--cor005);
+    font-size: 2em;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.div_justi form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.div_justi input[type="text"] {
+    font-size: medium;
+    margin: 10px 0;
+    padding: 5px;
+    padding-bottom: 0;
+    border: none;
+    border-bottom: 1px solid gray;
+    transition: all .3s
+}
+
+.div_justi input[type="text"]:focus {
+    outline: none;
+    border-bottom: 1px solid var(--cor002);
+}
+
+.div_justi input[type=file] {
+    display: none;
+}
+
+.div_justi .label_arq {
+    padding: 10px 20px;
+    width: 30%;
+    border-radius: 5px;
+    background-color: #44A64A;
+    color: #ffffff;
+    transition: all .3s;
+    text-align: center;
+}
+
+.div_justi #file-name {
+    margin-top: 15px;
+}
+
+.div_justi .label_arq:hover {
+    background-color: #44a64bd2;
+}
+
+.div_justi input[type="submit"] {
+    background-color: #ffffff;
+    border: 1px solid var(--cor001);
+    width: 50%;
+    padding: 10px;
+    margin: 15px 0px;
+    border-radius: 20px;
+    font-size: 17px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.div_justi input[type="submit"]:hover {
+    border: 1px solid var(--cor002);
+    background-color: var(--cor001);
+    color: white;
+    box-shadow: 0px 0px 7px var(--cor002);
+}

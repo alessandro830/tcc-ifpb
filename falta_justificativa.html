@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/aluno_justi.css">
+    <link rel="stylesheet" href="css/falta_just.css">
     <title>Falta/justificativa</title>
 </head>
 <body>
@@ -13,10 +13,14 @@
         <form action="php/regis_justificativa.php" method="post">
             <label for="justi">Justificativa de falta</label>
             <input type="text" name="justi" id="justi" required>
-            <label for="arquivo" class="label_arq">Arquivo</label>
-            <input type="file" name="arquivo" id="arquivo" required>
+            <label for="arquivo" class="label_arq" id="index-label">Indexar arquivo</label>
+            <input type="file" name="arquivo" id="arquivo" onchange="updateFileName(this)" required>
+            <div id="file-name"></div>
             <input type="submit" value="Enviar">
         </form>
     </div>
+
+    <script src="js/script.js"></script>
+
 </body>
 </html>
