@@ -45,7 +45,7 @@ h1 {
     font-weight: normal;
 }
 
-/* inicio da estilização gerais */
+/* fim da estilização gerais */
 
 /* inicio da estilização da seção dos cardápios */
 
@@ -249,7 +249,7 @@ div.div_button {
     justify-content: end;
 }
 
-input.button_save {
+input[type="submit"] {
     background-color: var(--cor001);
     padding: 12px;
     border: none;
@@ -260,9 +260,33 @@ input.button_save {
     transition: all 0.5s;
 }
 
-input.button_save:hover {
+input[type="submit"]:hover {
     background-color: var(--cor002);
     box-shadow: 0px 0px 10px #0d0d0d39;
 }
 
 /* fim da seção de marcar as quentinhas */
+
+/* estilização da seção de comentário */
+
+form.form_coment {
+    width: 80%;
+}
+
+input[type="text"] {
+    width: 80%;
+    font-size: medium;
+    margin: 10px 0;
+    padding: 5px;
+    padding-bottom: 0;
+    border: none;
+    border-bottom: 1px solid gray;
+    transition: all .3s
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-bottom: 1px solid var(--cor002);
+}
+
+/* fim da seção de comentário */

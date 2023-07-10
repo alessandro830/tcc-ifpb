@@ -34,7 +34,7 @@ div#div_form {
     height: 400px;
     padding: 50px 10px 50px 10px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px var(--cor001);
+    box-shadow: 0px 4px 10px #44a64b67;
     border: 1px solid var(--cor002);
 }
 

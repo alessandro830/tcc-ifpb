@@ -16,14 +16,12 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 97vh;
     background-color: var(--cor006)
 }
 
 .div_justi {
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,9 +30,10 @@ body {
     width: 650px;
     height: 300px;
     padding: 50px 10px 50px 10px;
-    border-radius: 10px;
+    border-radius: 0 0 5px 5px;
     box-shadow: 5px 5px 10px #44a64b4e;
     border: 1px solid var(--cor002);
+    border-top: none;
 }
 
 .div_justi h1 {
