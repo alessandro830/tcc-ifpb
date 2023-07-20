@@ -14,8 +14,20 @@
     padding: 0;
 }
 
+div.box {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+form {
+    width: 100%;
+}
+
 table {
-    width: 500px;
+    width: 100%;
     border-collapse: collapse;
     position: relative;
 }

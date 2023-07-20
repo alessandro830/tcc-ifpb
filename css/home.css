@@ -16,18 +16,17 @@
 }
 
 body {
+    display: flex;
+    align-items: center;
     justify-content: center;
     background-color: var(--cor006);
     height: 100vh;
 
 }
 
-body, div#opc {
+div#opc {
     display: flex;
     align-items: center;
-}
-
-div#opc {
     justify-content: space-evenly;
     background-color: #ffffff;
     width: 800px;
@@ -65,4 +64,12 @@ div#img {
     background-color: var(--cor001);
     color: white;
     box-shadow: 0px 0px 7px var(--cor002);
+}
+
+@media screen and (max-width:1000px) {
+        div#opc {
+            width: 100%;
+            border: none;
+            flex-direction: column;
+        }
 }

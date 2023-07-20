@@ -121,7 +121,7 @@ h1 {
 }
 
 .btn_download {
-    position: relative;
+    position: absolute;
     display: inline-flex;
     margin-left: 50px;
     padding: 5px 10px 0 10px;
@@ -290,3 +290,30 @@ input[type="text"]:focus {
 }
 
 /* fim da seção de comentário */
+
+@media screen and (max-width: 1000px) {
+    main {
+        width: 100%;
+        border: none;
+    }
+
+    .slider {
+        width: 90%;
+    }
+
+    .secao_quentinha h1 {
+        margin-bottom: 10px;
+    }
+    div.dias_semana {
+        width: 90%;
+    }
+
+    .dias_semana {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .secao_quentinha input[type="text"] {
+        width: 100%;
+    }
+}

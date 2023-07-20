@@ -57,10 +57,9 @@ body {
     font-size: medium;
     margin: 10px 0;
     padding: 5px;
-    padding-bottom: 0;
     border: none;
     border-bottom: 1px solid gray;
-    transition: all .3s
+    transition: all .3s ease-in-out;
 }
 
 .box input:focus {
@@ -90,4 +89,11 @@ body {
     background-color: var(--cor001);
     color: white;
     box-shadow: 0px 0px 7px var(--cor002);
+}
+
+@media screen and (max-width:1000px) {
+    div.box {
+        width: 100%;
+        border: none;
+    }
 }

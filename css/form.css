@@ -127,3 +127,14 @@ div#form h1 {
     color: #5b5b5b  ;
     text-decoration: underline;
 }
+
+@media screen and (max-width:1000px) {
+    div#div_form {
+        width: 90%;
+    }
+
+    div#img {
+        display: none;
+    }
+
+}
