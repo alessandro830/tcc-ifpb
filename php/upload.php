@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $targetDir = "tcc-ifbp/php/arquivos/";
+    $targetDir = "arquivos/justificativa";
     $targetFile = $targetDir . basename($_FILES["file"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
