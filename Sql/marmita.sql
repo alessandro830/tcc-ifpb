@@ -2,7 +2,7 @@ create schema marmita;
     create table funcionario(
 	  falta_aluno bigint,
     nome varchar(100) unique,
-    matricula bigint primary key,
+    mat bigint primary key,
     quant_quent int not null,
     senha varchar(50) not null 
 );
