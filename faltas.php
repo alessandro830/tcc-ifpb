@@ -1,3 +1,9 @@
+<?php
+
+include('php/protect.php')
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,7 +22,7 @@
     <header>
         <img src="images/ifpb-horizontal200.png" alt="logo horizontal do ifpb">
         <div class="nav_buttons">
-            <a href="funcionario.html"><button>Voltar</button></a>
+            <a href="funcionario.php"><button>Voltar</button></a>
         </div>
     </header>
     <main>

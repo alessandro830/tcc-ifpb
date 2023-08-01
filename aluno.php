@@ -1,3 +1,9 @@
+<?php
+
+include("php/protect.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +22,8 @@
     <header>
         <img src="images/ifpb-horizontal200.png" alt="logo horizontal do ifpb">
         <div class="nav_buttons">
-            <a href="falta_justificativa.html"><button>Justificativas/Faltas</button></a>
+            <a href="falta_justificativa.php"><button>Justificativas/Faltas</button></a>
+            <a href="php/logout.php"><button>Sair</button></a>
         </div>
     </header>
     <main>
