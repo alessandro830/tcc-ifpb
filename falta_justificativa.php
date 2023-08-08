@@ -26,7 +26,7 @@ include("php/protect.php");
     </header>
     <div class="box">
         <h1>Justificativa</h1>
-        <form action="php/upload.php" method="post">
+        <form action="php/upload.php" method="post" enctype="multipart/form-data">
             <label for="justi">Justificativa de falta</label>
             <input type="text" name="justi" id="justi" required>
             <label for="arquivo" class="label_arq" id="index-label">Indexar arquivo (PDF)</label>
