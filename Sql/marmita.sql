@@ -1,22 +1,26 @@
-create schema marmita;
-    create table funcionario(
-	  falta_aluno bigint,
-    nome varchar(100) unique,
-    mat bigint primary key,
-    quant_quent int not null,
-    senha varchar(50) not null 
+CREATE DATABASE marmita;
+
+USE marmita;
+
+CREATE TABLE funcionario (
+    falta_aluno BIGINT,
+    nome VARCHAR(100) UNIQUE,
+    mat BIGINT PRIMARY KEY,
+    quant_quent INT NOT NULL,
+    senha VARCHAR(50) NOT NULL
 );
 
-create table alunos(
-    segunda char(3),
-    terça char(3),
-    quarta char(3),
-    quinta char(3),
-    sexta char(3),
-    feedback varchar(500),
-    just_falt varchar(500),
-    matricula bigint primary key,
-    nome varchar(100) unique,
-    senha varchar(50) not null
-    );
+CREATE TABLE alunos (
+    segunda CHAR(3),
+    terca CHAR(3),
+    quarta CHAR(3),
+    quinta CHAR(3),
+    sexta CHAR(3),
+    feedback VARCHAR(500),
+    caminho VARCHAR(500),
+    matricula BIGINT PRIMARY KEY,
+    nome VARCHAR(100) UNIQUE,
+    senha VARCHAR(50) NOT NULL
+);
+
  
