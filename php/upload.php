@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
     $allowedFileTypes = array("pdf");
     $maxFileSize = 5 * 1024 * 1024; // 5 MB
+    $caminho_A = $targetFile;
 
     // Verificar se o upload ocorreu sem erros
     if ($_FILES["file"]["error"] !== UPLOAD_ERR_OK) {
@@ -38,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             // Usar consulta preparada para evitar injeção de SQL
-            $stmt = $conn->prepare("INSERT INTO arquivos (caminho) VALUES (?)");
+            $stmt = $conn->prepare("INSERT INTO alunos (caminho) VALUES ($caminho_A)");
             $stmt->bind_param("s", $targetFile);
 
             if ($stmt->execute()) {
