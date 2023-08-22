@@ -1,6 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $targetDir = "arquivos/justificativa/";
+    $targetDir = "arquivos";
     $targetFile = $targetDir . basename($_FILES["arquivo"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
@@ -18,13 +29,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!in_array($imageFileType, $allowedFileTypes) || $_FILES["arquivo"]["size"] > $maxFileSize) {
         echo "Desculpe, o arquivo enviado não é um PDF válido ou é muito grande.";
         $uploadOk = 0;
+        header("Location:justfalta.php");
     }
 
     if ($uploadOk == 0) {
         echo "Desculpe, seu arquivo não foi enviado.";
     } else {
+        echo $targetFile;
+        echo $_FILES["arquivo"]["tmp_name"];
+        
+
         if (move_uploaded_file($_FILES["arquivo"]["tmp_name"], $targetFile)) {
-            echo "O arquivo " . basename($_FILES["file"]["name"]) . " foi enviado.";
+            echo "O arquivo " . basename($_FILES["arquivo"]["name"]) . " foi enviado.";
 
             // Conexão com o banco de dados
             $servername = "localhost";
@@ -56,3 +72,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+</body>
+</html>
