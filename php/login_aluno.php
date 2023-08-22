@@ -31,7 +31,7 @@ else {
         $_SESSION['matricula'] = $usuario['matricula'];
         $_SESSION['nome'] = $usuario['nome'];
 
-        header('location:../aluno.html');
+        header('location:../aluno.php');
     }
     }
 ?>
