@@ -1,8 +1,8 @@
 <?php
 session_start();
-$matricula = $_SESSION['matricula'].
+$matricula = $_SESSION['matricula'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $targetDir = "arquivos/justificativa/";
+    $targetDir = "../arquivos/justificativa/";
     $targetFile = $targetDir . basename($_FILES["arquivo"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
@@ -28,12 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Desculpe, seu arquivo não foi enviado.";
     } else {
         if (move_uploaded_file($_FILES["arquivo"]["tmp_name"], $targetFile)) {
-            echo "O arquivo " . basename($_FILES["file"]["name"]) . " foi enviado.";
+            echo "O arquivo " . basename($_FILES["arquivo"]["name"]) . " foi enviado.";
 
             // Conexão com o banco de dados
             $servername = "localhost";
             $username = "root";
-            $password = "usbw";
+            $password = "";
             $dbname = "marmita";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
@@ -42,9 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 die("Falha na conexão com o banco de dados: " . $conn->connect_error);
             }
 
+
             // Usar consulta preparada para evitar injeção de SQL
-            $stmt = $conn->prepare("INSERT INTO alunos (caminho) VALUES ($caminho_A)");
-            $stmt->bind_param("s", $targetFile);
+            $stmt = $conn->prepare("INSERT INTO alunos (caminho) VALUES (?)");
+            $stmt->bind_param("s", $caminho_A);
 
             if ($stmt->execute()) {
                 echo "O caminho do arquivo foi salvo no banco de dados.";

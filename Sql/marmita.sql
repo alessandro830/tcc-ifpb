@@ -22,5 +22,3 @@ CREATE TABLE alunos (
     nome VARCHAR(100) UNIQUE,
     senha VARCHAR(50) NOT NULL
 );
-
- 
