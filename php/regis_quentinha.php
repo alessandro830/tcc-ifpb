@@ -1,4 +1,6 @@
 <?php
+session_start(); 
+$matricula = $_SESSION['matricula'];
 $seg = $_POST['segunda'];
 $ter = $_POST['terca'];
 $qua = $_POST['quarta'];
