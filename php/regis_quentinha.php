@@ -1,11 +1,15 @@
 <?php
 session_start(); 
-$matricula = $_SESSION['matricula'];
+
 $seg = $_POST['segunda'];
 $ter = $_POST['terca'];
 $qua = $_POST['quarta'];
 $qui = $_POST['quinta'];
 $sex = $_POST['sexta'];
+$matricula = $_SESSION['matricula'];
+
+$connect = mysqli_connect("localhost","root","","marmita");
+
 if (empty($seg)){
     $seg= 'não';
 }
@@ -38,7 +42,7 @@ if (empty($sex)){
 else{
     $sex='sim';
 }
-$connect = mysqli_connect("localhost","root","","marmita");
-$insert = "insert into alunos (segunda, terça, quarta, quinta, sexta) values('$seg','$ter','$qua','$qui','$sex')";
+
+$updateQuery = "UPDATE alunos SET segunda = '$segunda', terca = '$terca', quarta = '$quarta', quinta = '$quinta', sexta = '$sexta' WHERE matricula = $matricula";
 $result = mysqli_query($connect,$insert);
 ?>

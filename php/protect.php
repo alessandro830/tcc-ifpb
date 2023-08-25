@@ -13,6 +13,7 @@
     }
 
     if(!isset($_SESSION['matricula'])) {
+        ///die("Você não pode acessar essa página porque não está logado!<p><a href=\"index.html\">Logar!</a></p>");
         header('location:index.html');
         exit();
     }

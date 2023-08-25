@@ -34,10 +34,6 @@ include('php/protect.php')
                 <table>
                     <caption>lista de alunos que marcaram marmita</caption>
                     <thead>
-                        <!--
-                            puxar os dados nessa ordem
-                            repetir o checkbox em todos os alunos
-                        -->
                         <tr>
                             <th>Nome</th>
                             <th>Matrícula</th>
@@ -45,22 +41,38 @@ include('php/protect.php')
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>...</td>
-                            <td>...</td>
-                            <td><input type="checkbox" name="presenca" id="presenca" class="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <td>...</td>
-                            <td>...</td>
-                            <td><input type="checkbox" name="presenca" id="presenca" class="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <td>...</td>
-                            <td>...</td>
-                            <td><input type="checkbox" name="presenca" id="presenca" class="checkbox"></td>
-                        </tr>
+                        <?php
+                            
+                            function obter_dia ($dia) {
+                                $dia_semana = array (
+                                    'Sun' => 'domingo',
+                                    'Mon' => 'segunda',
+                                    'Tue' => 'terça',
+                                    'Wed' => 'quarta',
+                                    'Thu' => 'quinta',
+                                    'Fri' => 'sexta',
+                                    'Sat' => 'sabado'
+                                );
 
+                                return $dia_semana[$dia];
+                            }
+
+                            date_default_timezone_set('America/Sao_Paulo');
+                            $dia_atual = date('D');
+                            $dia_portugues = obter_dia($dia_atual);
+                            
+                            $con = mysqli_connect("localhost", "root", "usbw", "marmita");
+                            $select = "select * from alunos where " . $dia_portugues . " = 'sim';";
+                            $result = mysqli_query($con, $select) or die (mysqli_error($con));
+                            while($linha = mysqli_fetch_array($result)){
+                                echo "<tr>";
+                                    echo "<td>" . $linha['nome'] . "</td>";
+                                    echo "<td>" . $linha['matricula'] . "</td>";
+                                    echo "<td><input type='checkbox' name='presenca' id='presenca' class='checkbox'></td>";
+                                echo "<tr>";
+                            }
+
+                            ?>
                     </tbody>
                 </table>
                 <div class="div_btn_finalizar">
