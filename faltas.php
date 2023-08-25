@@ -28,7 +28,7 @@ include('php/protect.php')
     <main>
         <div class="box">
             <table>
-                <caption>lista de alunos com floatval</caption>
+                <caption>lista de alunos com falta</caption>
                 <thead>
                     <!--
             
