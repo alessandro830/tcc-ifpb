@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_FILES["arquivo"]["error"] !== UPLOAD_ERR_OK) {
         echo "<script>
         alert('ERR04:Erro no upload do arquivo.');";
-        echo "javascript:window.location='../falta_justificativa.php';</script>";
+        echo "<script>javascript:window.location='../falta_justificativa.php';</script>";
         exit;
     }
 
@@ -22,18 +22,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!in_array($imageFileType, $allowedFileTypes) || $_FILES["arquivo"]["size"] > $maxFileSize) {
         echo "<script>
         alert('desculpe o arquivo enviado não é um pdf ou é muito grande (tamanho limite de 5MB)');";
-        echo "javascript:window.location='../falta_justificativa.php';</script>";
+        echo "<script>javascript:window.location='../falta_justificativa.php';</script>";
         $uploadOk = 0;
     }
 
     if ($uploadOk == 0) {
         echo "<script>
         alert('ERR05: Arquivo não enviado');";
-        echo "javascript:window.location='../falta_justificativa.php';</script>";
+        echo "<script>javascript:window.location='../falta_justificativa.php';</script>";
     } else {
         if (move_uploaded_file($_FILES["arquivo"]["tmp_name"], $targetFile)) {
             echo "<script> alert('O arquivo " . basename($_FILES["arquivo"]["name"]) . " foi enviado.')</script>;";
-            echo "javascript:window.location='../falta_justificativa.php';</script>";
+            echo "<script>javascript:window.location='../falta_justificativa.php';</script>";
 
             // Conexão com o banco de dados
             $servername = "localhost";
@@ -43,26 +43,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            if ($conn->connect_error) {
-                echo "<script> alert('ERR06: falha ou tentar conectar-se, ". $conn->connect_error"')</script>";
-                echo "javascript:window.location='../falta_justificativa.php';</script>";
+// Usar consulta preparada para evitar injeção de SQL
+$stmt = $conn->prepare("SELECT * FROM alunos WHERE matricula = ?");
+$stmt->bind_param("s", $matricula);
+$stmt->execute();
+$result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            // Atualizar o caminho do arquivo para o aluno existente
+            $stmt = $conn->prepare("UPDATE alunos SET caminho = ? WHERE matricula = ?");
+            $stmt->bind_param("ss", $caminho_A, $matricula);
+
+            if ($stmt->execute()) {
+                echo "O caminho do arquivo foi atualizado no banco de dados.";
+            } else {
+                echo "Erro ao atualizar o caminho do arquivo no banco de dados: " . $stmt->error;
             }
-
-
-            // Usar consulta preparada para evitar injeção de SQL
-            $stmt = $conn->prepare("INSERT INTO alunos (caminho) VALUES (?)");
-            $stmt->bind_param("s", $caminho_A);
+        } else {
+            // Inserir um novo aluno com a matrícula e caminho do arquivo
+            $stmt = $conn->prepare("INSERT INTO alunos (matricula, caminho) VALUES (?, ?)");
+            $stmt->bind_param("ss", $matricula, $caminho_A);
 
             if ($stmt->execute()) {
                 echo "O caminho do arquivo foi salvo no banco de dados.";
             } else {
-                echo "Erro ao salvar o caminho do arquivo no banco de dados.";
+                echo "Erro ao salvar o caminho do arquivo no banco de dados: " . $stmt->error;
             }
+        }
 
-            $stmt->close();
-            $conn->close();
-        } else {
-            echo "Desculpe, houve um erro ao enviar o seu arquivo.";
+        $stmt->close();
+        $conn->close();
+
         }
     }
 }
