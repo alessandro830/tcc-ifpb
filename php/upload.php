@@ -12,23 +12,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Verificar se o upload ocorreu sem erros
     if ($_FILES["arquivo"]["error"] !== UPLOAD_ERR_OK) {
-        echo "Erro ao fazer o upload do arquivo.";
+        echo "<script>
+        alert('ERR04:Erro no upload do arquivo.');";
+        echo "javascript:window.location='../falta_justificativa.php';</script>";
         exit;
     }
 
     // Verificar o tipo de arquivo e o tamanho
     if (!in_array($imageFileType, $allowedFileTypes) || $_FILES["arquivo"]["size"] > $maxFileSize) {
         echo "<script>
-        alert('desculpe o arquivo deu enviado não é um pdf ou é muito grande (tamanho limite de 5MB)');";
+        alert('desculpe o arquivo enviado não é um pdf ou é muito grande (tamanho limite de 5MB)');";
         echo "javascript:window.location='../falta_justificativa.php';</script>";
         $uploadOk = 0;
     }
 
     if ($uploadOk == 0) {
-        echo "Desculpe, seu arquivo não foi enviado.";
+        echo "<script>
+        alert('ERR05: Arquivo não enviado');";
+        echo "javascript:window.location='../falta_justificativa.php';</script>";
     } else {
         if (move_uploaded_file($_FILES["arquivo"]["tmp_name"], $targetFile)) {
-            echo "O arquivo " . basename($_FILES["arquivo"]["name"]) . " foi enviado.";
+            echo "<script> alert('O arquivo " . basename($_FILES["arquivo"]["name"]) . " foi enviado.')</script>;";
+            echo "javascript:window.location='../falta_justificativa.php';</script>";
 
             // Conexão com o banco de dados
             $servername = "localhost";
@@ -39,7 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $conn = new mysqli($servername, $username, $password, $dbname);
 
             if ($conn->connect_error) {
-                die("Falha na conexão com o banco de dados: " . $conn->connect_error);
+                echo "<script> alert('ERR06: falha ou tentar conectar-se, ". $conn->connect_error"')</script>";
+                echo "javascript:window.location='../falta_justificativa.php';</script>";
             }
 
 
