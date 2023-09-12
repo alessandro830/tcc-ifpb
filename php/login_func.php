@@ -1,7 +1,6 @@
 <?php
 
-session_start(); 
-$matricula = $_SESSION['matricula'];$mat = $_POST['matricula'];
+$mat = $_POST['matricula'];
 $senha = $_POST['senha'];
 
 if(empty($mat) || empty($senha)) {

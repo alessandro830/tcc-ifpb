@@ -47,7 +47,7 @@ include('php/protect.php')
                                 $dia_semana = array (
                                     'Sun' => 'domingo',
                                     'Mon' => 'segunda',
-                                    'Tue' => 'terça',
+                                    'Tue' => 'terca',
                                     'Wed' => 'quarta',
                                     'Thu' => 'quinta',
                                     'Fri' => 'sexta',
@@ -68,7 +68,8 @@ include('php/protect.php')
                                 echo "<tr>";
                                     echo "<td>" . $linha['nome'] . "</td>";
                                     echo "<td>" . $linha['matricula'] . "</td>";
-                                    echo "<td><input type='checkbox' name='presenca' id='presenca' class='checkbox'></td>";
+                                    echo "<td><input type='radio' name='presenca' id='presenca' value='true' class='checkbox'> <label for='presenca'>Sim</label></td>";
+                                    echo "<td><input type='radio' name='presenca' id='presenca' value='false' class='checkbox'> <label for='presenca'>Não</label></td>";
                                 echo "<tr>";
                             }
 
