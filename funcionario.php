@@ -68,8 +68,8 @@ include('php/protect.php')
                                 echo "<tr>";
                                     echo "<td>" . $linha['nome'] . "</td>";
                                     echo "<td>" . $linha['matricula'] . "</td>";
-                                    echo "<td><input type='radio' name='presenca' id='presenca' value='true' class='checkbox'> <label for='presenca'>Sim</label></td>";
-                                    echo "<td><input type='radio' name='presenca' id='presenca' value='false' class='checkbox'> <label for='presenca'>Não</label></td>";
+                                    echo "<td><input type='radio' name='".$linha['matricula']."' id='presenca' value='true' class='checkbox'> <label for='presenca'>Sim</label></td>";
+                                    echo "<td><input type='radio' name='".$linha['matricula']."' id='presenca' value='false' class='checkbox'> <label for='presenca'>Não</label></td>";
                                 echo "<tr>";
                             }
 
