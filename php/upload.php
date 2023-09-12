@@ -57,7 +57,7 @@ $result = $stmt->get_result();
             if ($stmt->execute()) {
                 echo "O caminho do arquivo foi atualizado no banco de dados.";
             } else {
-                echo "Erro ao atualizar o caminho do arquivo no banco de dados: " . $stmt->error;
+                echo "<script>alert('Erro ao atualizar o caminho do arquivo no banco de dados " . $stmt->error;
             }
         } else {
             // Inserir um novo aluno com a matrícula e caminho do arquivo
