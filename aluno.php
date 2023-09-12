@@ -111,9 +111,14 @@ include("php/protect.php");
 
                 </div>
 
+                <div class="opc">
+                    <input type="radio" name="opc" id="marcar" value="1" checked> <label for="marcar">Marcar</label>
+                    <input type="radio" name="opc" id="desmarcar" value="2"> <label for="desmarcar">Desmarcar</label>
+                </div>
+
                 <div class="div_button">
                     <input class="button_save" type="submit" value="Salvar">
-                </div>    
+                </div>  
 
             </form>
 

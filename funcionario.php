@@ -61,8 +61,8 @@ include('php/protect.php')
                             $dia_atual = date('D');
                             $dia_portugues = obter_dia($dia_atual);
                             
-                            $con = mysqli_connect("localhost", "root", "usbw", "marmita");
-                            $select = "select * from alunos where " . $dia_portugues . " = 'sim';";
+                            $con = mysqli_connect("localhost", "root", "", "marmita");
+                            $select = "SELECT * FROM alunos WHERE `" . $dia_portugues . "` = 'sim';";
                             $result = mysqli_query($con, $select) or die (mysqli_error($con));
                             while($linha = mysqli_fetch_array($result)){
                                 echo "<tr>";

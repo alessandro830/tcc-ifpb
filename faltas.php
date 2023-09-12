@@ -26,28 +26,29 @@ include('php/protect.php')
         </div>
     </header>
     <main>
-        <div class="box">
+    <div class="box">
             <table>
-                <caption>lista de alunos que marcaram marmita</caption>
+                <caption>lista de alunos com falta</caption>
                 <thead>
-                    <!--
-            
-                        mostrar apenas os dados de quem tem falta
-                        acumular o número de faltas no aluno
-                        transformar a matricula em link para a página da justificativa de falta
-                    -->
                     <tr>
-                        <th>Matrícula</th>
                         <th>Nome</th>
+                        <th>Matrícula</th>
                         <th>Faltas</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
+                    <?php
+                    $con = mysqli_connect("localhost", "root", "usbw", "marmita");
+                    $select = "select * from alunos where falta >= 1";
+                    $result = mysqli_query($con, $select) or die (mysqli_error($con));
+                    while($linha = mysqli_fetch_array($result)){
+                        echo "<tr>";
+                            echo "<td><a href='falta_aluno.php'>" . $linha['nome'] . "</a></td>";
+                            echo "<td>" . $linha['matricula'] . "</td>";
+                            echo "<td>" . $linha['falta'] . "</td>";
+                        echo "<tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>

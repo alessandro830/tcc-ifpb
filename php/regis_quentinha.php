@@ -10,37 +10,54 @@ $matricula = $_SESSION['matricula'];
 
 $connect = mysqli_connect("localhost","root","","marmita");
 
-if (empty($seg)){
-    $seg= 'não';
+if (isset($_POST['segunda'])) {
+    if ($_POST['opc'] == 1) {
+        $updateQuery001 = "UPDATE alunos SET segunda = 'sim' WHERE matricula = " . $_SESSION['matricula'];
+    }
+    elseif ($_POST['opc'] == 2) {
+        $updateQuery001 = "UPDATE alunos SET segunda = 'nao' WHERE matricula = " . $_SESSION['matricula'];
+    }
+    $result = mysqli_query($connect, $updateQuery001);
 }
-else{
-    $seg='sim';
-}
-if (empty($ter)){
-    $ter='nao';
 
+if (isset($_POST['terca'])) {
+    if ($_POST['opc'] == 1) {
+        $updateQuery002 = "UPDATE alunos SET terca = 'sim' WHERE matricula = " . $_SESSION['matricula'];
+    }
+    elseif ($_POST['opc'] == 2) {
+        $updateQuery002 = "UPDATE alunos SET terca = 'nao' WHERE matricula = " . $_SESSION['matricula'];
+    }
+    $result = mysqli_query($connect, $updateQuery002);
 }
-else{
-    $ter='sim';
-}
-if (empty($qua)){
-    $qua='nao';
-}
-else{
-    $qua='sim';
-}
-if (empty($qui)){
-    $qui= 'não';
-}
-else{
-    $qui= 'sim';
-}
-if (empty($sex)){
-    $sex='nao';
 
+if (isset($_POST['quarta'])) {
+    if ($_POST['opc'] == 1) {
+        $updateQuery003 = "UPDATE alunos SET quarta = 'sim' WHERE matricula = " . $_SESSION['matricula'];
+    }
+    elseif ($_POST['opc'] == 2) {
+        $updateQuery003 = "UPDATE alunos SET quarta = 'nao' WHERE matricula = " . $_SESSION['matricula'];
+    }
+    $result = mysqli_query($connect, $updateQuery003);
 }
-else{
-    $sex='sim';
+
+if (isset($_POST['quinta'])) {
+    if ($_POST['opc'] == 1) {
+        $updateQuery004 = "UPDATE alunos SET quinta = 'sim' WHERE matricula = " . $_SESSION['matricula'];
+    }
+    elseif ($_POST['opc'] == 2) {
+        $updateQuery004 = "UPDATE alunos SET quinta = 'nao' WHERE matricula = " . $_SESSION['matricula'];
+    }
+    $result = mysqli_query($connect, $updateQuery004);
+}
+
+if (isset($_POST['sexta'])) {
+    if ($_POST['opc'] == 1) {
+        $updateQuery005 = "UPDATE alunos SET sexta = 'sim' WHERE matricula = " . $_SESSION['matricula'];
+    }
+    elseif ($_POST['opc'] == 2) {
+        $updateQuery005 = "UPDATE alunos SET sexta = 'nao' WHERE matricula = " . $_SESSION['matricula'];
+    }
+    $result = mysqli_query($connect, $updateQuery005);
 }
 
 $updateQuery = "UPDATE alunos SET segunda = '$segunda', terca = '$terca', quarta = '$quarta', quinta = '$quinta', sexta = '$sexta' WHERE matricula = $matricula";
