@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar se o upload ocorreu sem erros
     if ($_FILES["arquivo"]["error"] !== UPLOAD_ERR_OK) {
         echo "<script>
-        alert('ERR04:Erro no upload do arquivo.');";
+        alert('ERR04:Erro no upload do arquivo.');<script>";
         echo "<script>javascript:window.location='../falta_justificativa.php';</script>";
         exit;
     }
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar o tipo de arquivo e o tamanho
     if (!in_array($imageFileType, $allowedFileTypes) || $_FILES["arquivo"]["size"] > $maxFileSize) {
         echo "<script>
-        alert('desculpe o arquivo enviado não é um pdf ou é muito grande (tamanho limite de 5MB)');";
+        alert('desculpe o arquivo enviado não é um pdf ou é muito grande (tamanho limite de 5MB)');<script>";
         echo "<script>javascript:window.location='../falta_justificativa.php';</script>";
         $uploadOk = 0;
     }

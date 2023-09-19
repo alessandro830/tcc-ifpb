@@ -25,7 +25,7 @@ include('php/protect.php')
         <div class="nav_buttons">
             <a href="faltas.php"><button>Faltas</button></a>
             <a href="extras.php"><button>Extras</button></a>
-            <a href="php/logout.php"><button>Sair</button></a>
+            <a href="php/logout.php"><button class="btn_logout">Sair</button></a>
         </div>
     </header>
     <main>
@@ -37,7 +37,7 @@ include('php/protect.php')
                         <tr>
                             <th>Nome</th>
                             <th>Matrícula</th>
-                            <th>Presença</th>
+                            <th colspan="2">Presença</th>
                         </tr>
                     </thead>
                     <tbody>
