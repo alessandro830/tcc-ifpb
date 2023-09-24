@@ -1,10 +1,10 @@
 <?php
- $servername = "localhost";
- $username = "root";
- $password = "usbw";
- $dbname = "marmita";
- $presenca = $_POST['veio'];
- 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "marmita";
+$presenca = $_POST['veio'];
+
     if($presenca == 'true'){
         $quant = 0;
         $conn = new mysqli($servername, $username, $password, $dbname);

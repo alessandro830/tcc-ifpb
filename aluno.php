@@ -1,5 +1,5 @@
 <?php
-
+include('php/func_dia.php');
 include("php/protect.php");
 $matricula = $_SESSION['matricula'];
 ?>
@@ -23,7 +23,7 @@ $matricula = $_SESSION['matricula'];
         <img src="images/ifpb-horizontal200.png" alt="logo horizontal do ifpb">
         <div class="nav_buttons">
             <a href="falta_justificativa.php"><button>Justificativas/Faltas</button></a>
-            <a href="php/logout.php"><button>Sair</button></a>
+            <a href="php/logout.php"><button class="btn_logout">Sair</button></a>
         </div>
     </header>
     <main>
@@ -83,101 +83,198 @@ $matricula = $_SESSION['matricula'];
             <form action="php/regis_quentinha.php" method="post">
 
             <div class="dias_semana">
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "marmita";
-$conn = new mysqli($servername, $username, $password, $dbname);
-$stmt = $conn->prepare("SELECT segunda, terca, quarta, quinta, sexta FROM alunos WHERE matricula = ?");
-$stmt->bind_param("s", $matricula);
-$stmt->execute();
-$result = $stmt->get_result();
-$semana = mysqli_fetch_array($result);
-$seg = $semana['segunda'];
-$ter = $semana['terca'];
-$qua = $semana['quarta'];
-$qui = $semana['quinta'];
-$sex = $semana['sexta'];
-if($seg == 'sim'){
-    echo"<div class='dia'>";
-        echo"<label for='segunda'>Segunda-Feira</label>";
-        echo"<input type='checkbox' name='segunda' id='segunda' value='1' class='checkbox' checked>";
-    echo"</div>";
-}
+                    <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "marmita";
 
-else{
-    echo"<div class='dia'>";
-        echo"<label for='segunda'>Segunda-Feira</label>";
-        echo"<input type='checkbox' name='segunda' id='segunda' value='1' class='checkbox' >";
-    echo"</div>";
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    $stmt = $conn->prepare("SELECT segunda, terca, quarta, quinta, sexta FROM alunos WHERE matricula = ?");
+                    $stmt->bind_param("s", $matricula);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $semana = mysqli_fetch_array($result);
 
-}
-if($ter == 'sim'){
-    echo"<div class='dia'>";
-        echo"<label for='terca'>Terça-Feira</label>";
-        echo"<input type='checkbox' name='terca' id='terca' value='1' class='checkbox' checked>";
-    echo"</div>";
-}
+                    $seg = $semana['segunda'];
+                    $ter = $semana['terca'];
+                    $qua = $semana['quarta'];
+                    $qui = $semana['quinta'];
+                    $sex = $semana['sexta'];
 
-else{
-    echo"<div class='dia'>";
-        echo"<label for='terca'>Terça-Feira</label>";
-        echo"<input type='checkbox' name='terca' id='terca' value='1' class='checkbox' >";
-    echo"</div>";
-}
-if($qua == 'sim'){
-    echo"<div class='dia'>";
-        echo"<label for='quarta'>Quarta-Feira</label>";
-        echo"<input type='checkbox' name='quarta' id='quarta' value='1' class='checkbox' checked>";
-    echo"</div>";
-}
-    
-else{
-    echo"<div class='dia'>";
-        echo"<label for='quarta'>Quarta-Feira</label>";
-        echo"<input type='checkbox' name='quarta' id='quarta' value='1' class='checkbox' >";
-    echo"</div>";
-}
-if($qui == 'sim'){
-    echo"<div class='dia'>";
-        echo"<label for='quinta'>Quinta-Feira</label>";
-        echo"<input type='checkbox' name='quinta' id='quinta' value='1' class='checkbox' checked>";
-    echo"</div>";
-}
-    
-else{
-    echo"<div class='dia'>";
-        echo"<label for='quinta'>Quinta-Feira</label>";
-        echo"<input type='checkbox' name='quinta' id='quinta' value='1' class='checkbox' >";
-    echo"</div>";
-}
-if($sex == 'sim'){
-    echo"<div class='dia'>";
-        echo"<label for='sexta'>Sexta-Feira</label>";
-        echo"<input type='checkbox' name='sexta' id='sexta' value='1' class='checkbox' checked>";
-    echo"</div>";
-}
-    
-else{
-    echo"<div class='dia'>";
-        echo"<label for='sexta'>Sexta-Feira</label>";
-        echo"<input type='checkbox' name='sexta' id='sexta' value='1' class='checkbox' >";
-    echo"</div>";
-}
-$stmt->close();
-$conn->close();
-?>
+                    date_default_timezone_set('America/Sao_Paulo');
+                    $dia_atual = date('D');
+                    $dia_portugues = obter_dia($dia_atual);
+
+                    if($seg == 'sim' && $dia_portugues == 'segunda'){
+                        echo"<div class='dia'>";
+                            echo"<label for='segunda'>Segunda-Feira</label>";
+                            echo"<input type='checkbox' name='segunda' id='segunda' value='1' class='checkbox' checked disabled='disabled'>";
+                        echo"</div>";
+                    }
+
+                    elseif($seg == 'nao' && $dia_portugues == 'segunda'){
+                        echo"<div class='dia'>";
+                            echo"<label for='segunda'>Segunda-Feira</label>";
+                            echo"<input type='checkbox' name='segunda' id='segunda' value='1' class='checkbox' disabled='disabled'>";
+                        echo"</div>";
+                    }
+
+                    elseif($seg == 'sim' && $dia_portugues != 'segunda'){
+                        echo"<div class='dia'>";
+                            echo"<label for='segunda'>Segunda-Feira</label>";
+                            echo"<input type='checkbox' name='segunda' id='segunda' value='1' class='checkbox' checked>";
+                        echo"</div>";
+                    }
+
+                    else{
+                        echo"<div class='dia'>";
+                            echo"<label for='segunda'>Segunda-Feira</label>";
+                            echo"<input type='checkbox' name='segunda' id='segunda' value='1' class='checkbox'>";
+                        echo"</div>";
+                    }
+
+                    if($ter == 'sim' && $dia_portugues == 'terca'){
+                        echo"<div class='dia'>";
+                            echo"<label for='terca'>Terça-Feira</label>";
+                            echo"<input type='checkbox' name='terca' id='terca' value='1' class='checkbox' checked disabled='disabled'>";
+                        echo"</div>";
+                    }
+
+                    elseif($ter == 'nao' && $dia_portugues == 'terca'){
+                        echo"<div class='dia'>";
+                            echo"<label for='terca'>Terça-Feira</label>";
+                            echo"<input type='checkbox' name='terca' id='terca' value='1' class='checkbox'disabled='disabled'>";
+                        echo"</div>";
+                    }
+
+                    elseif($ter == 'sim' && $dia_portugues != 'terca'){
+                        echo"<div class='dia'>";
+                            echo"<label for='terca'>Terça-Feira</label>";
+                            echo"<input type='checkbox' name='terca' id='terca' value='1' class='checkbox' checked>";
+                        echo"</div>";
+                    }
+
+                    else{
+                        echo"<div class='dia'>";
+                            echo"<label for='terca'>Terça-Feira</label>";
+                            echo"<input type='checkbox' name='terca' id='terca' value='1' class='checkbox'>";
+                        echo"</div>";
+                    }
+
+                    if($qua == 'sim' && $dia_portugues == 'quarta'){
+                        echo"<div class='dia'>";
+                            echo"<label for='quarta'>Quarta-Feira</label>";
+                            echo"<input type='checkbox' name='quarta' id='quarta' value='1' class='checkbox' checked disabled='disabled'>";
+                        echo"</div>";
+                    }
+
+                    elseif($qua == 'nao' && $dia_portugues == 'quarta'){
+                        echo"<div class='dia'>";
+                            echo"<label for='quarta'>Quarta-Feira</label>";
+                            echo"<input type='checkbox' name='quarta' id='quarta' value='1' class='checkbox' disabled>";
+                        echo"</div>";
+                    }
+
+                    elseif($qua == 'sim' && $dia_portugues != 'quarta'){
+                        echo"<div class='dia'>";
+                            echo"<label for='quarta'>Quarta-Feira</label>";
+                            echo"<input type='checkbox' name='quarta' id='quarta' value='1' class='checkbox' checked>";
+                        echo"</div>";
+                    }
+
+                    else{
+                        echo"<div class='dia'>";
+                            echo"<label for='quarta'>Quarta-Feira</label>";
+                            echo"<input type='checkbox' name='quarta' id='terca' value='1' class='checkbox'>";
+                        echo"</div>";
+                    }
+                    if($qui == 'sim' && $dia_portugues == 'quinta'){
+                        echo"<div class='dia'>";
+                            echo"<label for='quinta'>Quinta-Feira</label>";
+                            echo"<input type='checkbox' name='quinta' id='quinta' value='1' class='checkbox' checked disabled='disabled'>";
+                        echo"</div>";
+                    }
+
+                    elseif($qui == 'nao' && $dia_portugues == 'quinta'){
+                        echo"<div class='dia'>";
+                            echo"<label for='quinta'>Quinta-Feira</label>";
+                            echo"<input type='checkbox' name='quinta' id='quinta' value='1' class='checkbox' disabled='disabled'>";
+                        echo"</div>";
+                    }
+
+                    elseif($qui == 'sim' && $dia_portugues != 'quinta'){
+                        echo"<div class='dia'>";
+                            echo"<label for='quinta'>Quinta-Feira</label>";
+                            echo"<input type='checkbox' name='quinta' id='quinta' value='1' class='checkbox' checked>";
+                        echo"</div>";
+                    }
+
+                    else{
+                        echo"<div class='dia'>";
+                            echo"<label for='quinta'>Quinta-Feira</label>";
+                            echo"<input type='checkbox' name='quinta' id='quinta' value='1' class='checkbox'>";
+                        echo"</div>";
+                    }
+
+                    if($sex == 'sim' && $dia_portugues == 'sexta'){
+                        echo"<div class='dia'>";
+                            echo"<label for='sexta'>Sexta-Feira</label>";
+                            echo"<input type='checkbox' name='sexta' id='sexta' value='1' class='checkbox' checked disabled='disabled'>";
+                        echo"</div>";
+                    }
+
+                    elseif($sex == 'nao' && $dia_portugues == 'sexta'){
+                        echo"<div class='dia'>";
+                            echo"<label for='sexta'>Sexta-Feira</label>";
+                            echo"<input type='checkbox' name='sexta' id='sexta' value='1' class='checkbox' disabled='disabled'>";
+                        echo"</div>";
+                    }
+
+                    elseif($sex == 'sim' && $dia_portugues != 'sexta'){
+                        echo"<div class='dia'>";
+                            echo"<label for='sexta'>Sexta-Feira</label>";
+                            echo"<input type='checkbox' name='sexta' id='sexta' value='1' class='checkbox' checked>";
+                        echo"</div>";
+                    }
+
+                    else{
+                        echo"<div class='dia'>";
+                            echo"<label for='sexta'>Sexta-Feira</label>";
+                            echo"<input type='checkbox' name='sexta' id='sexta' value='1' class='checkbox'>";
+                        echo"</div>";
+                    }
+
+                    $stmt->close();
+                    $conn->close();
+                    ?>
                 </div>
-
-                <div class="opc">
-                    <input type="radio" name="opc" id="marcar" value="1" checked> <label for="marcar">Marcar</label>
-                    <input type="radio" name="opc" id="desmarcar" value="2"> <label for="desmarcar">Desmarcar</label>
-                </div>
-
                 <div class="div_button">
-                    <input class="button_save" type="submit" value="Salvar">
+                    <input class="button_save" type="submit" value="Salvar" onclick="confirm()">
                 </div>  
+                <script>
+                    function confirmSelection() {
+                        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                        var selectedDays = [];
+
+                        checkboxes.forEach(function (checkbox) {
+                            if (checkbox.checked) {
+                                selectedDays.push(checkbox.id);
+                            }
+                        });
+
+                        if (selectedDays.length > 0) {
+                            var result = window.confirm("Deseja marcar os seguintes dias: " + selectedDays.join(', ') + " ?");
+                            if (result == true) {
+                                alert("Concluído");
+                            } else {
+                                alert("Cancelado");
+                            }
+                        } else {
+                            alert("Nenhum dia selecionado");
+                        }
+                    }
+                </script>
 
             </form>
 
