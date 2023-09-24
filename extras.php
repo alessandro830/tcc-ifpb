@@ -1,7 +1,13 @@
 <?php
 
-include('php/protect.php')
+include('php/protect.php');
+include('php/horario.php');
 
+$con = mysqli_connect("localhost", "root", "usbw", "marmita");
+$select = "SELECT * FROM quent_dias";
+$result = mysqli_query($con, $select) or die (mysqli_error($con));
+
+$quant_quent = $result;
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +30,9 @@ include('php/protect.php')
         </div>
     </header>
     <div class="box">
-        <h1>Total de extras:...</h1>
+        <?php
+        echo "<h1>Total de extras: $quant_quent</h1>";
+        ?>
         <form action="#">
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome" autocomplete="off">

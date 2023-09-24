@@ -43,24 +43,6 @@ include('php/protect.php')
                     <tbody>
                         <?php
                             
-                            function obter_dia ($dia) {
-                                $dia_semana = array (
-                                    'Sun' => 'domingo',
-                                    'Mon' => 'segunda',
-                                    'Tue' => 'terca',
-                                    'Wed' => 'quarta',
-                                    'Thu' => 'quinta',
-                                    'Fri' => 'sexta',
-                                    'Sat' => 'sabado'
-                                );
-
-                                return $dia_semana[$dia];
-                            }
-
-                            date_default_timezone_set('America/Sao_Paulo');
-                            $dia_atual = date('D');
-                            $dia_portugues = obter_dia($dia_atual);
-                            
                             $con = mysqli_connect("localhost", "root", "", "marmita");
                             $select = "SELECT * FROM alunos WHERE `" . $dia_portugues . "` = 'sim';";
                             $result = mysqli_query($con, $select) or die (mysqli_error($con));
