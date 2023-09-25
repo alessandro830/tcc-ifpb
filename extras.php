@@ -7,7 +7,7 @@ $con = mysqli_connect("localhost", "root", "usbw", "marmita");
 $select = "SELECT * FROM quent_dias";
 $result = mysqli_query($con, $select) or die (mysqli_error($con));
 
-$quant_quent = $result;
+$quant_quent = mysqli_num_rows($result);
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ $quant_quent = $result;
     </header>
     <div class="box">
         <?php
-        echo "<h1>Total de extras: $quant_quent</h1>";
+        echo "<h1>Total de extras:". $quant_quent."</h1>";
         ?>
         <form action="#">
             <label for="nome">Nome</label>

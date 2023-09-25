@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "usbw";
 $dbname = "marmita";
 $presenca = $_POST['veio'];
 
@@ -12,7 +12,7 @@ $presenca = $_POST['veio'];
         if ($conn->connect_error) {
             die("Falha na conexão com o banco de dados: " . $conn->connect_error);
         }
-        $stmt = $conn->prepare("INSERT INTO alunos (falta_aluno) VALUES (?)");
+        $stmt = $conn->prepare("INSERT INTO faltas (falta_aluno) VALUES (?)");
         $stmt->bind_param("s", $quant);
         echo $stmt;
         $stmt->close();
@@ -24,7 +24,7 @@ $presenca = $_POST['veio'];
         if ($conn->connect_error) {
             die("Falha na conexão com o banco de dados: " . $conn->connect_error);
         }
-        $stmt = $conn->prepare("INSERT INTO alunos (falta_aluno) VALUES (?)");
+        $stmt = $conn->prepare("INSERT INTO faltas (falta_aluno) VALUES (?)");
         $stmt->bind_param("s", $quant);
         echo $stmt;
         $stmt->close();

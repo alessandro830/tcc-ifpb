@@ -1,5 +1,5 @@
 <?php
-
+include('protect.php');
 session_start();  
 $matricula = $_SESSION['matricula'];
 $mat = $_POST['matricula'];
@@ -11,7 +11,7 @@ if(empty($mat) || empty($senha)) {
     </script>";
 }
 else {
-    $connect = mysqli_connect("localhost","root","","marmita");
+    $connect = mysqli_connect("localhost","root","usbw","marmita");
     $select = "select * from alunos a where a.matricula='" . $mat . "' and a.senha='". $senha. "'";
     $sql_query = $connect->query($select) or die ("Falha na execução do código SQL");
     $result = mysqli_query($connect, $select);

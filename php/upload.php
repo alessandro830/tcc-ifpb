@@ -38,20 +38,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Conexão com o banco de dados
             $servername = "localhost";
             $username = "root";
-            $password = "";
+            $password = "usbw";
             $dbname = "marmita";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Usar consulta preparada para evitar injeção de SQL
-$stmt = $conn->prepare("SELECT * FROM alunos WHERE matricula = ?");
+$stmt = $conn->prepare("SELECT * FROM faltas WHERE matricula = ?");
 $stmt->bind_param("s", $matricula);
 $stmt->execute();
 $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             // Atualizar o caminho do arquivo para o aluno existente
-            $stmt = $conn->prepare("UPDATE alunos SET caminho = ? WHERE matricula = ?");
+            $stmt = $conn->prepare("UPDATE faltas SET caminho = ? WHERE matricula = ?");
             $stmt->bind_param("ss", $caminho_A, $matricula);
 
             if ($stmt->execute()) {
@@ -61,8 +61,8 @@ $result = $stmt->get_result();
             }
         } else {
             // Inserir um novo aluno com a matrícula e caminho do arquivo
-            $stmt = $conn->prepare("INSERT INTO alunos (matricula, caminho) VALUES (?, ?)");
-            $stmt->bind_param("ss", $matricula, $caminho_A);
+            $stmt = $conn->prepare("UPDATE faltas SET caminho = ? WHERE matricula = ?;");
+            $stmt->bind_param("ss",  $caminho_A,$matricula);
 
             if ($stmt->execute()) {
                 echo "O caminho do arquivo foi salvo no banco de dados.";
