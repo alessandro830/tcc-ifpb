@@ -8,7 +8,7 @@ $qui = $_POST['quinta'];
 $sex = $_POST['sexta'];
 $matricula = $_SESSION['matricula'];
 
-$connect = mysqli_connect("localhost","root","usbw","marmita");
+$connect = mysqli_connect("localhost","root","","marmita");
 
 if (isset($_POST['segunda'])) {
     $updateQuery001 = "UPDATE quent_dias SET segunda = 'sim' WHERE matricula = " . $_SESSION['matricula'];

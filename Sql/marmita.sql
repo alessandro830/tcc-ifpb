@@ -35,3 +35,8 @@ CREATE TABLE faltas (
     just_escrita VARCHAR(500),
     FOREIGN KEY (matricula) REFERENCES alunos(matricula)
 );
+CREATE TABLE extras(
+    nome VARCHAR(100),
+    mat BIGINT PRIMARY KEY,
+    dia VARCHAR(10)
+)

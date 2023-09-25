@@ -9,7 +9,7 @@ if(empty($mat) || empty($senha)) {
     </script>";
 }
 else {
-    $connect = mysqli_connect("localhost","root","usbw","marmita");
+    $connect = mysqli_connect("localhost","root","","marmita");
     $select = "select * from funcionario f where f.mat='" . $mat . "' and f.senha='". $senha. "'";
     $sql_query = $connect->query($select) or die ("Falha na execução do código SQL");
     $result = mysqli_query($connect, $select);

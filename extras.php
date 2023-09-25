@@ -3,11 +3,26 @@
 include('php/protect.php');
 include('php/horario.php');
 
-$con = mysqli_connect("localhost", "root", "usbw", "marmita");
-$select = "SELECT * FROM quent_dias";
+$dia_atual = date('D');
+$dia_portugues = obter_dia($dia_atual);
+
+$con = mysqli_connect("localhost", "root", "", "marmita");
+
+$select = "SELECT count(*) FROM quent_dias WHERE $dia_portugues = $dia_portugues";
 $result = mysqli_query($con, $select) or die (mysqli_error($con));
 
-$quant_quent = mysqli_num_rows($result);
+$select_ex = "SELECT count(*) FROM extras WHERE dia = '$dia_portugues'";
+$result_ex = mysqli_query($con, $select_ex) or die (mysqli_error($con));
+$row_ex = mysqli_fetch_row($result_ex);
+$quant_quent2 = $row_ex[0];
+
+$quant = 200;
+$row = mysqli_fetch_row($result);
+$quant_resultado = $row[0]; 
+
+$quant_quent = $quant - $quant_resultado - $quant_quent2;
+
+mysqli_close($con);
 ?>
 
 <!DOCTYPE html>
@@ -33,11 +48,13 @@ $quant_quent = mysqli_num_rows($result);
         <?php
         echo "<h1>Total de extras:". $quant_quent."</h1>";
         ?>
-        <form action="#">
+        <form action="php/regis_extra.php" method="post">
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome" autocomplete="off">
             <label for="matricula">matricula</label>
             <input type="number" name="matricula" id="matricula">
+            <label for="date">Dia</label>
+            <input type="text" name="date" id="date">
             <input type="submit" value="Concluir">
         </form>
     </div>

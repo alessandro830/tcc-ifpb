@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Conexão com o banco de dados
             $servername = "localhost";
             $username = "root";
-            $password = "usbw";
+            $password = "";
             $dbname = "marmita";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
