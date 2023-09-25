@@ -10,15 +10,28 @@ CREATE TABLE funcionario (
 );
 
 CREATE TABLE alunos (
+
+    feedback VARCHAR(500),
+    matricula BIGINT PRIMARY KEY,
+    nome VARCHAR(100) UNIQUE,
+    senha VARCHAR(50) NOT NULL,
+
+);
+CREATE TABLE quent_dias(
     segunda CHAR(3),
     terca CHAR(3),
     quarta CHAR(3),
     quinta CHAR(3),
     sexta CHAR(3),
-    feedback VARCHAR(500),
+    matricula BIGINT,
+    Foreign Key (matricula) REFERENCES alunos(matricula)
+)
+CREATE TABLE faltas (
+    nome varchar(100),
+    matricula BIGINT,
+    falta_aluno BIGINT,
+    dia_falta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     caminho VARCHAR(500),
-    matricula BIGINT PRIMARY KEY,
-    nome VARCHAR(100) UNIQUE,
-    senha VARCHAR(50) NOT NULL,
-    falta_aluno BIGINT
+    just_escrita VARCHAR(500),
+    FOREIGN KEY (matricula) REFERENCES alunos(matricula)
 );
