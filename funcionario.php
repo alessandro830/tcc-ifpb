@@ -25,12 +25,13 @@ include('php/func_dia.php');
         <div class="nav_buttons">
             <a href="faltas.php"><button>Faltas</button></a>
             <a href="extras.php"><button>Extras</button></a>
+            <a href="verjust.php"><button>Ver Justificativa</button></a>
             <a href="php/logout.php"><button class="btn_logout">Sair</button></a>
         </div>
     </header>
     <main>
         <div class="box">
-            <form action="#" method="post">
+            <form action="php/presenca.php" method="post">
                 <table>
                     <caption>lista de alunos que marcaram marmita</caption>
                     <thead>

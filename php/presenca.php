@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "marmita";
-$presenca = $_POST['veio'];
+$presenca = $_POST['presenca'];
 
     if($presenca == 'true'){
         $quant = 0;
@@ -11,10 +11,12 @@ $presenca = $_POST['veio'];
 
         if ($conn->connect_error) {
             die("Falha na conexão com o banco de dados: " . $conn->connect_error);
-        }
+        }else{
         $stmt = $conn->prepare("INSERT INTO alunos (falta_aluno) VALUES (?)");
         $stmt->bind_param("s", $quant);
-        echo $stmt;
+        echo "<script>alert('Faltas Salvas');</script>";
+        echo "<script>javascript:window.location='../funcionario.php';</script>";
+        }
         $stmt->close();
         $conn->close();
     }else{

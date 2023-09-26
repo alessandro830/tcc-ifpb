@@ -30,7 +30,7 @@ include("php/protect.php");
             <label for="just">Justificativa</label>
             <input type="text" name="just" id="just">
             <label for="arquivo" class="label_arq" id="index-label">Indexar arquivo (PDF)</label>
-            <input type="file" name="arquivo" id="arquivo" onchange="updateFileName(this)" required>
+            <input type="file" name="arquivo" id="arquivo" onchange="updateFileName(this)" >
             <div id="file-name"></div>
             <input type="submit" value="Enviar">
         </form>
