@@ -1,5 +1,4 @@
 <?php
-include('protect.php');
 session_start();  
 $matricula = $_SESSION['matricula'];
 $mat = $_POST['matricula'];
@@ -7,11 +6,11 @@ $senha = $_POST['senha'];
 
 if(empty($mat) || empty($senha)) {
     echo "<script> alert('erro no login');
-        window.location.href='index.php';
+        window.location.href='index.html';
     </script>";
 }
 else {
-    $connect = mysqli_connect("localhost","root","","marmita");
+    $connect = mysqli_connect("localhost","root","usbw","marmita");
     $select = "select * from alunos a where a.matricula='" . $mat . "' and a.senha='". $senha. "'";
     $sql_query = $connect->query($select) or die ("Falha na execução do código SQL");
     $result = mysqli_query($connect, $select);
@@ -34,7 +33,7 @@ else {
         $_SESSION['matricula'] = $usuario['matricula'];
         $_SESSION['nome'] = $usuario['nome'];
 
-        header('location:../aluno.php');
+        header("location:../aluno.php");
     }
     }
 ?>

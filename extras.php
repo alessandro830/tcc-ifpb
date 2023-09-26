@@ -2,11 +2,12 @@
 
 include('php/protect.php');
 include('php/horario.php');
+include('php/quantidade.php');
 
 $dia_atual = date('D');
 $dia_portugues = obter_dia($dia_atual);
 
-$con = mysqli_connect("localhost", "root", "", "marmita");
+$con = mysqli_connect("localhost", "root", "usbw", "marmita");
 
 $select = "SELECT count(*) FROM quent_dias WHERE $dia_portugues = $dia_portugues";
 $result = mysqli_query($con, $select) or die (mysqli_error($con));
@@ -16,7 +17,7 @@ $result_ex = mysqli_query($con, $select_ex) or die (mysqli_error($con));
 $row_ex = mysqli_fetch_row($result_ex);
 $quant_quent2 = $row_ex[0];
 
-$quant = 200;
+$quant =quant($dia_portugues) ;
 $row = mysqli_fetch_row($result);
 $quant_resultado = $row[0]; 
 

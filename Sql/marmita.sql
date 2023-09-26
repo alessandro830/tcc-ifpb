@@ -14,7 +14,7 @@ CREATE TABLE alunos (
     feedback VARCHAR(500),
     matricula BIGINT PRIMARY KEY,
     nome VARCHAR(100) UNIQUE,
-    senha VARCHAR(50) NOT NULL,
+    senha VARCHAR(50) NOT NULL
 
 );
 CREATE TABLE quent_dias(

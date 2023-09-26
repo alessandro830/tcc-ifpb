@@ -1,33 +1,21 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "usbw";
 $dbname = "marmita";
 $presenca = $_POST['veio'];
 
-    if($presenca == 'true'){
+    if($presenca == 'sim'){
         $quant = 0;
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        if ($conn->connect_error) {
-            die("Falha na conexão com o banco de dados: " . $conn->connect_error);
-        }
-        $stmt = $conn->prepare("INSERT INTO faltas (falta_aluno) VALUES (?)");
-        $stmt->bind_param("s", $quant);
-        echo $stmt;
-        $stmt->close();
-        $conn->close();
+        $connect = mysqli_connect("localhost","root","usbw","marmita");
+        $insert = "insert into faltas(falta_aluno) values('$quant')";
+        $result = mysqli_query($connect,$insert);
+        var_dump($result);
     }else{
         $quant = 1;
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        if ($conn->connect_error) {
-            die("Falha na conexão com o banco de dados: " . $conn->connect_error);
-        }
-        $stmt = $conn->prepare("INSERT INTO faltas (falta_aluno) VALUES (?)");
-        $stmt->bind_param("s", $quant);
-        echo $stmt;
-        $stmt->close();
-        $conn->close();
+        $connect = mysqli_connect("localhost","root","usbw","marmita");
+        $insert = "insert into faltas(falta_aluno) values('$quant')";
+        $result = mysqli_query($connect,$insert);
+        var_dump($result);
 }
 ?>

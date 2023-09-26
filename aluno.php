@@ -86,11 +86,11 @@ $matricula = $_SESSION['matricula'];
                     <?php
                     $servername = "localhost";
                     $username = "root";
-                    $password = "";
+                    $password = "usbw";
                     $dbname = "marmita";
 
                     $conn = new mysqli($servername, $username, $password, $dbname);
-                    $stmt = $conn->prepare("SELECT segunda, terca, quarta, quinta, sexta FROM alunos WHERE matricula = ?");
+                    $stmt = $conn->prepare("SELECT segunda, terca, quarta, quinta, sexta FROM quent_dias WHERE matricula = ?");
                     $stmt->bind_param("s", $matricula);
                     $stmt->execute();
                     $result = $stmt->get_result();
@@ -250,7 +250,7 @@ $matricula = $_SESSION['matricula'];
                     ?>
                 </div>
                 <div class="div_button">
-                    <input class="button_save" type="submit" value="Salvar" onclick="confirm()">
+                    <input class="button_save" type="submit" value="Salvar" onclick="confirmSelection()">
                 </div>  
                 <script>
                     function confirmSelection() {
