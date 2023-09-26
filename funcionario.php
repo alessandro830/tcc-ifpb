@@ -63,10 +63,15 @@ include('php/func_dia.php');
                     </tbody>
                 </table>
                 <div class="div_btn_finalizar">
-                    <input type="submit" value="Finalizar">
+                    <input class="button_pres" type="submit" value="Finalizar">
                 </div>
             </form>
+            <dialog class="conf-msg004" id="conf-msg">
+                <p>Mensagem</p>
+                <button class="ok" id="ok3">Ok</button>
+            </dialog>
         </div>
     </main>
+    <script type="module" src="js/popup_pres.js"></script>
 </body>
 </html>

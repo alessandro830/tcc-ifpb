@@ -59,22 +59,3 @@ confMsg002.querySelector('#ok1').onclick = function () {
     localStorage.saveBtn002 = 'false'
 }
 // FIm do JS para o pop-uo doo comentário
-
-// Inicio do JS para o pop-up do justificativa
-var confMsg003 = document.querySelector('#conf-msg003')
-var saveDays003 = document.querySelector('.button_just')
-
-saveDays003.onclick = function() {
-    localStorage.saveBtn003 = 'true'
-}
-
-    if (localStorage.saveBtn003 == 'true') {
-        confMsg003.querySelector('p').innerText = "Justificativa enviada com sucesso!"
-        confMsg003.showModal()
-        localStorage.saveBtn003 = 'false'
-    }
-confMsg003.querySelector('#ok').onclick = function () {
-    confMsg003.close()
-    localStorage.saveBtn003 = 'false'
-}
-// Fim do JS para o pop-up do justificativa

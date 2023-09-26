@@ -18,7 +18,7 @@
 
 /* salvar dias css */
 
-.conf-msg, .conf-msg002 {
+.conf-msg, .conf-msg002, #conf-msg {
     position: absolute;
     margin: auto;
     top: 5px;
