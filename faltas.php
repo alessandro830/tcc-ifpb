@@ -38,14 +38,14 @@ include('php/protect.php')
                 </thead>
                 <tbody>
                     <?php
-                    $con = mysqli_connect("localhost", "root", "", "marmita");
-                    $select = "select * from alunos where falta_aluno >= 1";
+                    $con = mysqli_connect("localhost", "root", "usbw", "marmita");
+                    $select = "SELECT alunos.*, faltas.falta_aluno FROM faltas JOIN alunos ON faltas.matricula = alunos.matricula WHERE faltas.falta_aluno >= 1;";
                     $result = mysqli_query($con, $select) or die (mysqli_error($con));
                     while($linha = mysqli_fetch_array($result)){
                         echo "<tr>";
                             echo "<td><a href='falta_aluno.php'>" . $linha['nome'] . "</a></td>";
                             echo "<td>" . $linha['matricula'] . "</td>";
-                            echo "<td>" . $linha['falta'] . "</td>";
+                            echo "<td>" . $linha['falta_aluno'] . "</td>";
                         echo "<tr>";
                     }
                     ?>

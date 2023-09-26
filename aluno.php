@@ -39,11 +39,11 @@ $matricula = $_SESSION['matricula'];
                     <?php
                     $servername = "localhost";
                     $username = "root";
-                    $password = "";
+                    $password = "usbw";
                     $dbname = "marmita";
 
                     $conn = new mysqli($servername, $username, $password, $dbname);
-                    $stmt = $conn->prepare("SELECT segunda, terca, quarta, quinta, sexta FROM alunos WHERE matricula = ?");
+                    $stmt = $conn->prepare("SELECT segunda, terca, quarta, quinta, sexta FROM quent_dias WHERE matricula = ?");
                     $stmt->bind_param("s", $matricula);
                     $stmt->execute();
                     $result = $stmt->get_result();

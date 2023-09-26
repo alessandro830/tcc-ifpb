@@ -47,15 +47,15 @@ include('php/func_dia.php');
                             $dia_atual = date('D');
                             $dia_portugues = obter_dia($dia_atual);
                             
-                            $con = mysqli_connect("localhost", "root", "", "marmita");
-                            $select = "SELECT * FROM alunos WHERE `" . $dia_portugues . "` = 'sim';";
+                            $con = mysqli_connect("localhost", "root", "usbw", "marmita");
+                            $select = "SELECT quent_dias.*, alunos.nome FROM quent_dias JOIN alunos ON quent_dias.matricula = alunos.matricula WHERE " . $dia_portugues . " = 'sim';";
                             $result = mysqli_query($con, $select) or die (mysqli_error($con));
                             while($linha = mysqli_fetch_array($result)){
                                 echo "<tr>";
                                     echo "<td>" . $linha['nome'] . "</td>";
                                     echo "<td>" . $linha['matricula'] . "</td>";
-                                    echo "<td><input type='radio' name='".$linha['matricula']."' id='presenca' value='true' class='checkbox'> <label for='presenca'>Sim</label></td>";
-                                    echo "<td><input type='radio' name='".$linha['matricula']."' id='presenca' value='false' class='checkbox'> <label for='presenca'>Não</label></td>";
+                                    echo "<td><input type='radio' name='veio' id='presenca' value='sim' class='checkbox'> <label for='presenca'>Sim</label></td>";
+                                    echo "<td><input type='radio' name='veio' id='presenca' value='nao' class='checkbox'> <label for='presenca'>Não</label></td>";
                                 echo "<tr>";
                             }
 

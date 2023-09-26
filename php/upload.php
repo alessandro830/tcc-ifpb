@@ -12,28 +12,25 @@ if($just != null ){
     $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Usar consulta preparada para evitar injeção de SQL
-$stmt = $conn->prepare("SELECT * FROM alunos WHERE matricula = ?");
+$stmt = $conn->prepare("SELECT * FROM faltas WHERE matricula = ?");
 $stmt->bind_param("s", $matricula);
 $stmt->execute();
 $result = $stmt->get_result();
 
-if ($result->num_rows > 0) {
-    // Atualizar o caminho do arquivo para o aluno existente
-    $stmt = $conn->prepare("UPDATE alunos SET caminho = ? WHERE matricula = ?");
-    $stmt->bind_param("ss", $caminho_A, $matricula);
+        if ($result->num_rows > 0) {
+            // Atualizar o caminho do arquivo para o aluno existente
+            $stmt = $conn->prepare("UPDATE faltas SET caminho = ? WHERE matricula = ?");
+            $stmt->bind_param("ss", $caminho_A, $matricula);
 
-    if ($stmt->execute()) {
-        echo "<script>alert('Justificativa foi enviada');</script>";
-        echo "<script>javascript:window.location='../falta_justificativa.php';</script>";
-        $uploadOk = 0;
-    } else {
-        echo "<script>alert('Erro ao atualizar o caminho do arquivo no banco de dados " . $stmt->error. ");</script>";
-        echo "<script>javascript:window.location='../falta_justificativa.php';</script>";
-    }
-} else {
-    // Inserir um novo aluno com a matrícula e caminho do arquivo
-    $stmt = $conn->prepare("INSERT INTO alunos (matricula, caminho) VALUES (?, ?)");
-    $stmt->bind_param("ss", $matricula, $caminho_A);
+            if ($stmt->execute()) {
+                echo "O caminho do arquivo foi atualizado no banco de dados.";
+            } else {
+                echo "<script>alert('Erro ao atualizar o caminho do arquivo no banco de dados " . $stmt->error;
+            }
+        } else {
+            // Inserir um novo aluno com a matrícula e caminho do arquivo
+            $stmt = $conn->prepare("UPDATE faltas SET caminho = ? WHERE matricula = ?;");
+            $stmt->bind_param("ss",  $caminho_A,$matricula);
 
     if ($stmt->execute()) {
         echo "<script>alert('O caminho do arquivo foi salvo no banco de dados.');</script>";
