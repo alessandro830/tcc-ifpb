@@ -203,7 +203,13 @@ $matricula = $_SESSION['matricula'];
                 </div>
                 <div class="div_button">
                     <input class="button_save" type="submit" value="Salvar">
-                </div>  
+                </div>
+                <dialog class="conf-msg" id="conf_msg001">
+                    <p>Confirmar os dias?</p>
+                    <button id="sim">Sim</button>
+                    <button id="nao">Não</button>
+                    <button id="ok2" style="visibility: hidden">Ok</button>
+                </dialog>  
 
             </form>
 
@@ -211,13 +217,11 @@ $matricula = $_SESSION['matricula'];
 
                 <form action="#" method="post" class="form_coment">
                     <input type="text" name="comentario" id="comentario" autocomplete="off" required>
-                    <input type="submit" value="Concluir">
+                    <input class="button_comment" type="submit" value="Concluir">
                 </form>
-                <dialog class="conf-msg">
-                    <p>Confirmar os dias?</p>
-                    <button id="sim">Sim</button>
-                    <button id="nao">Não</button>
-                    <button id="ok" style="visibility: hidden">Ok</button>
+                <dialog class="conf-msg" id="conf-msg002">
+                    <p>Mensagem</p>
+                    <button id="ok">Ok</button>
                 </dialog>
         </section>
         <section id="secao_cardapio" class="secao_cardapio">
