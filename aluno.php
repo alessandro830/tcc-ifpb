@@ -206,9 +206,7 @@ $matricula = $_SESSION['matricula'];
                 </div>
                 <dialog class="conf-msg" id="conf_msg001">
                     <p>Confirmar os dias?</p>
-                    <button id="sim">Sim</button>
-                    <button id="nao">Não</button>
-                    <button id="ok2" style="visibility: hidden">Ok</button>
+                    <button class="ok" id="ok2">Ok</button>
                 </dialog>  
 
             </form>
@@ -219,9 +217,9 @@ $matricula = $_SESSION['matricula'];
                     <input type="text" name="comentario" id="comentario" autocomplete="off" required>
                     <input class="button_comment" type="submit" value="Concluir">
                 </form>
-                <dialog class="conf-msg" id="conf-msg002">
+                <dialog class="conf-msg002">
                     <p>Mensagem</p>
-                    <button id="ok">Ok</button>
+                    <button class="ok" id="ok1">Ok</button>
                 </dialog>
         </section>
         <section id="secao_cardapio" class="secao_cardapio">

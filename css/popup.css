@@ -18,7 +18,7 @@
 
 /* salvar dias css */
 
-.conf-msg {
+.conf-msg, .conf-msg002 {
     position: absolute;
     margin: auto;
     top: 5px;
@@ -27,7 +27,7 @@
     border-radius: 10px;
 }
 
-#sim, #nao, #ok {
+.ok {
     padding: 5px;
     margin: 15px 2px 0px 2px;
 }
