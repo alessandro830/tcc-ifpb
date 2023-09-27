@@ -47,7 +47,7 @@ include('php/func_dia.php');
                             $dia_atual = date('D');
                             $dia_portugues = obter_dia($dia_atual);
                             
-                            $con = mysqli_connect("localhost", "root", "usbw", "marmita");
+                            $con = mysqli_connect("localhost", "root", "", "marmita");
                             $select = "SELECT quent_dias.*, alunos.nome FROM quent_dias JOIN alunos ON quent_dias.matricula = alunos.matricula WHERE " . $dia_portugues . " = 'sim';";
                             $result = mysqli_query($con, $select) or die (mysqli_error($con));
                             while($linha = mysqli_fetch_array($result)){
