@@ -33,16 +33,17 @@ include("php/protect.php");
             <label for="arquivo" class="label_arq" id="index-label">Indexar arquivo (PDF)</label>
             <input type="file" name="arquivo" id="arquivo" onchange="updateFileName(this)" >
             <div id="file-name"></div>
-            <input class="btn_just" type="submit" value="Enviar">
+            <input class="button_just" type="submit" value="Enviar">
         </form>
-        <dialog class="conf-msg" id="conf-msg003">
+        <dialog class="conf-msg003" id="conf-msg">
             <p>Mensagem</p>
-            <button id="ok">Ok</button>
+            <button class="ok" id="ok1">Ok</button>
         </dialog>
     </div>
 
 
     <script src="js/script.js"></script>
+    <script type="module" src="js/popup_just.js"></script>
 
 </body>
 </html>

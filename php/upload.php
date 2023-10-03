@@ -23,7 +23,7 @@ $result = $stmt->get_result();
             $stmt->bind_param("ss", $caminho_A, $matricula);
 
             if ($stmt->execute()) {
-                echo "O caminho do arquivo foi atualizado no banco de dados.";
+                header('location:../falta_justificativa.php');
             } else {
                 echo "<script>alert('Erro ao atualizar o caminho do arquivo no banco de dados " . $stmt->error;
             }
@@ -51,28 +51,28 @@ $result = $stmt->get_result();
                 $conn = new mysqli($servername, $username, $password, $dbname);
 
             // Usar consulta preparada para evitar injeção de SQL
-            $stmt = $conn->prepare("SELECT * FROM alunos WHERE matricula = ?");
+            $stmt = $conn->prepare("SELECT * FROM faltas WHERE matricula = ?");
             $stmt->bind_param("s", $matricula);
             $stmt->execute();
             $result = $stmt->get_result();
 
             if ($result->num_rows > 0) {
                 // Atualizar o caminho do arquivo para o aluno existente
-                $stmt = $conn->prepare("UPDATE alunos SET caminho = ? WHERE matricula = ?");
+                $stmt = $conn->prepare("UPDATE faltas SET caminho = ? WHERE matricula = ?");
                 $stmt->bind_param("ss", $caminho_A, $matricula);
 
                 if ($stmt->execute()) {
-                    echo "O caminho do arquivo foi atualizado no banco de dados.";
+                    header('location:../falta_justificativa.php');
                 } else {
                     echo "<script>alert('Erro ao atualizar o caminho do arquivo no banco de dados " . $stmt->error. ");</script>";
                 }
             } else {
                 // Inserir um novo aluno com a matrícula e caminho do arquivo
-                $stmt = $conn->prepare("INSERT INTO alunos (matricula, caminho) VALUES (?, ?)");
+                $stmt = $conn->prepare("INSERT INTO faltas (matricula, caminho) VALUES (?, ?)");
                 $stmt->bind_param("ss", $matricula, $caminho_A);
 
                 if ($stmt->execute()) {
-                    echo "<script>alert('O caminho do arquivo foi salvo no banco de dados.');</script>";
+                    header('location:../falta_justificativa.php');
                 } else {
                     echo "Erro ao salvar o caminho do arquivo no banco de dados: " . $stmt->error;
                 }
@@ -118,14 +118,14 @@ $result = $stmt->get_result();
                         $conn = new mysqli($servername, $username, $password, $dbname);
         
             // Usar consulta preparada para evitar injeção de SQL
-            $stmt = $conn->prepare("SELECT * FROM alunos WHERE matricula = ?");
+            $stmt = $conn->prepare("SELECT * FROM faltas WHERE matricula = ?");
             $stmt->bind_param("s", $matricula);
             $stmt->execute();
             $result = $stmt->get_result();
         
                     if ($result->num_rows > 0) {
                         // Atualizar o caminho do arquivo para o aluno existente
-                        $stmt = $conn->prepare("UPDATE alunos SET caminho = ? WHERE matricula = ?");
+                        $stmt = $conn->prepare("UPDATE faltas SET caminho = ? WHERE matricula = ?");
                         $stmt->bind_param("ss", $caminho_A, $matricula);
         
                         if ($stmt->execute()) {
@@ -135,11 +135,11 @@ $result = $stmt->get_result();
                         }
                     } else {
                         // Inserir um novo aluno com a matrícula e caminho do arquivo
-                        $stmt = $conn->prepare("INSERT INTO alunos (matricula, caminho) VALUES (?, ?)");
+                        $stmt = $conn->prepare("INSERT INTO faltas (matricula, caminho) VALUES (?, ?)");
                         $stmt->bind_param("ss", $matricula, $caminho_A);
         
                         if ($stmt->execute()) {
-                            echo "O caminho do arquivo foi salvo no banco de dados.";
+                            header('location:../falta_justificativa.php');
                         } else {
                             echo "Erro ao salvar o caminho do arquivo no banco de dados: " . $stmt->error;
                         }
@@ -155,3 +155,14 @@ $result = $stmt->get_result();
 
         }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href=""></a>
+</body>
+</html>
