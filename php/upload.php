@@ -1,6 +1,7 @@
 <?php
 session_start();
 $matricula = $_SESSION['matricula'];
+$just = $_POST['just'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $targetDir = "../arquivos/justificativa/";
     $targetFile = $targetDir . basename($_FILES["arquivo"]["name"]);
@@ -38,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Conexão com o banco de dados
             $servername = "localhost";
             $username = "root";
-            $password = "";
+            $password = "usbw";
             $dbname = "marmita";
 
             $conn = new mysqli($servername, $username, $password, $dbname);
@@ -51,8 +52,8 @@ $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             // Atualizar o caminho do arquivo para o aluno existente
-            $stmt = $conn->prepare("UPDATE faltas SET caminho = ? WHERE matricula = ?");
-            $stmt->bind_param("ss", $caminho_A, $matricula);
+            $stmt = $conn->prepare("UPDATE faltas SET caminho = ?, just_escrita =?  WHERE matricula = ?");
+            $stmt->bind_param("sss", $caminho_A,$just,$matricula);
 
             if ($stmt->execute()) {
                 echo "O caminho do arquivo foi atualizado no banco de dados.";
@@ -62,7 +63,7 @@ $result = $stmt->get_result();
         } else {
             // Inserir um novo aluno com a matrícula e caminho do arquivo
             $stmt = $conn->prepare("UPDATE faltas SET caminho = ? WHERE matricula = ?;");
-            $stmt->bind_param("ss",  $caminho_A,$matricula);
+            $stmt->bind_param("sss",  $caminho_A,$just,$matricula);
 
             if ($stmt->execute()) {
                 echo "O caminho do arquivo foi salvo no banco de dados.";
