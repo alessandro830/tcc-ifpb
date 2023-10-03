@@ -12,4 +12,7 @@
 
         return $dia_semana[$dia];
     }
+    function semana ($semana) {
+        
+    }
 ?>

@@ -12,6 +12,7 @@ $matricula = $_SESSION['matricula'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/aluno.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/popup.css">
     <script type="text/javascript" src="js/carrosel.js"></script>
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -28,55 +29,6 @@ $matricula = $_SESSION['matricula'];
     </header>
     <main>
         
-        <section id="secao_cardapio" class="secao_cardapio">
-
-            <h1>Cardápios</h1>
-
-            <div class="slider">
-                <div class="slides">
-
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
-                    <input type="radio" name="radio-btn" id="radio3">
-                    <input type="radio" name="radio-btn" id="radio4">
-
-                    <div class="slide" id="slide-first">
-                        <img src="images/almoco001.PNG" alt="image do cardapio">
-                    </div>
-                    <div class="slide">
-                        <img src="images/almoco002.PNG" alt="image do cardapio">
-                    </div>
-                    <div class="slide">
-                        <img src="images/jantar001.PNG" alt="image do cardapio">
-                    </div>
-                    <div class="slide">
-                        <img src="images/jantar002.PNG" alt="image do cardapio">
-                    </div>
-
-                </div>
-
-                    <div class="navegation-manual">
-                        <label for="radio1" class="manual-btn"></label>
-                        <label for="radio2" class="manual-btn"></label>
-                        <label for="radio3" class="manual-btn"></label>
-                        <label for="radio4" class="manual-btn"></label>
-                    </div>
-
-            </div>
-
-            <div class="div_download">
-                <div class="btn_download">
-                    <span>Download das imagens</span>
-                    <ul>    
-                        <li><a href="images/almoco001.PNG" download>almoço 1</a></li>
-                        <li><a href="images/almoco002.PNG" download>almoço 2</a></li>
-                        <li><a href="images/jantar001.PNG" download>jantar 1</a></li>
-                        <li><a href="images/jantar002.PNG" download>jantar 2</a></li>
-                    </ul>
-                </div>
-            </div>
-
-        </section>
         <section id="secao_quentinha" class="secao_quentinha">
 
             <h1>Marque sua quentinha</h1>
@@ -86,7 +38,7 @@ $matricula = $_SESSION['matricula'];
                     <?php
                     $servername = "localhost";
                     $username = "root";
-                    $password = "usbw";
+                    $password = "";
                     $dbname = "marmita";
 
                     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -250,42 +202,76 @@ $matricula = $_SESSION['matricula'];
                     ?>
                 </div>
                 <div class="div_button">
-                    <input class="button_save" type="submit" value="Salvar" onclick="confirmSelection()">
-                </div>  
-                <script>
-                    function confirmSelection() {
-                        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                        var selectedDays = [];
-
-                        checkboxes.forEach(function (checkbox) {
-                            if (checkbox.checked) {
-                                selectedDays.push(checkbox.id);
-                            }
-                        });
-
-                        if (selectedDays.length > 0) {
-                            var result = window.confirm("Deseja marcar os seguintes dias: " + selectedDays.join(', ') + " ?");
-                            if (result == true) {
-                                alert("Concluído");
-                            } else {
-                                alert("Cancelado");
-                            }
-                        } else {
-                            alert("Nenhum dia selecionado");
-                        }
-                    }
-                </script>
+                    <input class="button_save" type="submit" value="Salvar">
+                </div>
+                <dialog class="conf-msg" id="conf_msg001">
+                    <p>Confirmar os dias?</p>
+                    <button class="ok" id="ok2">Ok</button>
+                </dialog>  
 
             </form>
 
             <h1>Comentário</h1>
 
-                <form action="" method="post" class="form_coment">
+                <form action="#" method="post" class="form_coment">
                     <input type="text" name="comentario" id="comentario" autocomplete="off" required>
-                    <input type="submit" value="Concluir">
+                    <input class="button_comment" type="submit" value="Concluir">
                 </form>
+                <dialog class="conf-msg002">
+                    <p>Mensagem</p>
+                    <button class="ok" id="ok1">Ok</button>
+                </dialog>
+        </section>
+        <section id="secao_cardapio" class="secao_cardapio">
 
+        <h1>Cardápios</h1>
+
+        <div class="div_download">
+            <div class="btn_download">
+                <span>Download das imagens</span>
+                <ul>    
+                    <li><a href="images/almoco001.PNG" download>almoço 1</a></li>
+                    <li><a href="images/almoco002.PNG" download>almoço 2</a></li>
+                    <li><a href="images/jantar001.PNG" download>jantar 1</a></li>
+                    <li><a href="images/jantar002.PNG" download>jantar 2</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="slider">
+            <div class="slides">
+
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+
+                <div class="slide" id="slide-first">
+                    <img src="images/almoco001.PNG" alt="image do cardapio">
+                </div>
+                <div class="slide">
+                    <img src="images/almoco002.PNG" alt="image do cardapio">
+                </div>
+                <div class="slide">
+                    <img src="images/jantar001.PNG" alt="image do cardapio">
+                </div>
+                <div class="slide">
+                    <img src="images/jantar002.PNG" alt="image do cardapio">
+                </div>
+
+            </div>
+
+                <div class="navegation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                    <label for="radio4" class="manual-btn"></label>
+                </div>
+
+            </div>
         </section>
     </main>
+<script type="module" src="js/popup.js"></script>
 </body>
 </html>

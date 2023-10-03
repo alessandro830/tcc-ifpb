@@ -27,7 +27,7 @@ header {
 button {
     background-color: transparent;
     padding: 15px 22px;
-    border: 1.5px solid var(--cor002);
+    border: 1px solid var(--cor002);
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
@@ -41,19 +41,12 @@ button:hover {
 }
 
 button.btn_logout {
-    background-color: transparent;
-    padding: 15px 22px;
-    border: 1.5px solid var(--cor003);
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s;
+    border: 1px solid #b62b36;
 }
 
-button:hover {
-    background-color: var(--cor001);
-    color: white;
-    box-shadow: 0px 0px 7px var(--cor003);
+button.btn_logout:hover {
+    background-color: var(--cor003);
+    box-shadow: 0 0 7px #b62b36;
 }
 
 @media screen and (max-width:1000px) {

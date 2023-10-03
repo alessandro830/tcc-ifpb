@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+:root {
+    --cor001: #44A64A;
+    --cor002: #2A8C39;  
+    --cor003: #D93644;
+    --cor004: #403837;
+    --cor005: #0D0D0D;
+    --cor006: #e6e6e6;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* salvar dias css */
+
+.conf-msg, .conf-msg002, #conf-msg {
+    position: absolute;
+    margin: auto;
+    top: 5px;
+    border-style: none;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.ok {
+    padding: 5px;
+    margin: 15px 2px 0px 2px;
+}
