@@ -30,6 +30,15 @@ include("php/protect.php");
         <form action="php/upload.php" method="post" enctype="multipart/form-data">
             <label for="just">Justificativa</label>
             <input type="text" name="just" id="just">
+            <label for="data_falta">Data das faltas</label>
+                <div class="select_container">
+                    <select name="datas" id="data_falta">
+                        <option value="">20/12/2023</option>
+                    </select>
+                    <div class="icon_container">
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                </div>
             <label for="arquivo" class="label_arq" id="index-label">Indexar arquivo (PDF)</label>
             <input type="file" name="arquivo" id="arquivo" onchange="updateFileName(this)" >
             <div id="file-name"></div>

@@ -64,6 +64,27 @@ div.box input[type="text"]:focus {
     border-bottom: 1px solid var(--cor002);
 }
 
+div.box select {
+    margin: 10px 0;
+    border: 1px solid #44A64A;
+    appearance: none;
+    padding: 5px 30px 5px 15px;
+    width: 140px;
+    color: #0D0D0D;
+    background-color: #ffffff;
+    font-size: 16px;
+}
+
+div.box select .icon_container {
+    width: 40px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
 div.box input[type=file] {
     display: none;
 }
