@@ -32,23 +32,21 @@ include("php/protect.php");
             <input type="text" name="just" id="just">
             <label for="data_falta">Data das faltas</label>
                 <div class="select_container">
-                <?php
+                <select name="datas" id="data_falta" class="select_box">
+                    <?php
 
-                $matricula = $_SESSION['matricula'];
-                $con = mysqli_connect("localhost", "root", "", "marmita");
-                $select = "SELECT * FROM faltas WHERE matricula = '$matricula' AND falta_aluno = 1";
-                $result = mysqli_query($con, $select) or die(mysqli_error($con));
+                    $matricula = $_SESSION['matricula'];
+                    $con = mysqli_connect("localhost", "root", "", "marmita");
+                    $select = "SELECT * FROM faltas WHERE matricula = '$matricula' AND falta_aluno = 1";
+                    $result = mysqli_query($con, $select) or die(mysqli_error($con));
 
-                echo '<select name="datas" id="data_falta" class="select_box>';
+                    while ($linha = mysqli_fetch_array($result)) {
+                        echo '<option value="' . $linha['dia_falta'] . '">' . $linha['dia_falta'] . '</option>';
+                    }
 
-                while ($linha = mysqli_fetch_array($result)) {
-                    echo '<option value="' . $linha['dia_falta'] . '">' . $linha['dia_falta'] . '</option>';
-                }
-
-                echo '</select>';
-
-                mysqli_close($con);
-                ?>
+                    mysqli_close($con);
+                    ?>
+                    </select>
                 </div>
             <label for="arquivo" class="label_arq" id="index-label">Indexar arquivo (PDF)</label>
             <input type="file" name="arquivo" id="arquivo" onchange="updateFileName(this)" >
