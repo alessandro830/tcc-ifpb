@@ -32,9 +32,23 @@ include("php/protect.php");
             <input type="text" name="just" id="just">
             <label for="data_falta">Data das faltas</label>
                 <div class="select_container">
-                    <select name="datas" id="data_falta">
-                        <option value="">20/12/2023</option>
-                    </select>
+                     <?php
+               
+                $matricula = $_SESSION['matricula'];
+                $con = mysqli_connect("localhost", "root", "", "marmita");
+                $select = "SELECT * FROM faltas WHERE matricula = '$matricula' AND falta_aluno = 1";
+                $result = mysqli_query($con, $select) or die(mysqli_error($con));
+
+                echo '<select name="datas" id="data_falta">';
+
+                while ($linha = mysqli_fetch_array($result)) {
+                    echo '<option value="' . $linha['dia_falta'] . '">' . $linha['dia_falta'] . '</option>';
+                }
+
+                echo '</select>';
+
+                mysqli_close($con);
+                ?>
                     <div class="icon_container">
                         <i class="fa-solid fa-caret-down"></i>
                     </div>
