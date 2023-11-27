@@ -30,7 +30,7 @@ $result = $stmt->get_result();
         } else {
             // Inserir um novo aluno com a matrícula e caminho do arquivo
             $stmt = $conn->prepare("UPDATE faltas SET caminho = ? WHERE matricula = ?;");
-            $stmt->bind_param("sss",  $caminho_A,$just,$matricula);
+            $stmt->bind_param("sss", $caminho_A, $just, $matricula);
 
     if ($stmt->execute()) {
         echo "<script>alert('O caminho do arquivo foi salvo no banco de dados.');</script>";
@@ -41,7 +41,6 @@ $result = $stmt->get_result();
     }
 }
 }else{
- 
 
             $servername = "localhost";
                 $username = "root";

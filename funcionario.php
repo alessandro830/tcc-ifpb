@@ -50,15 +50,16 @@ include('php/func_dia.php');
                             $con = mysqli_connect("localhost", "root", "", "marmita");
                             $select = "SELECT quent_dias.*, alunos.nome FROM quent_dias JOIN alunos ON quent_dias.matricula = alunos.matricula WHERE " . $dia_portugues . " = 'sim';";
                             $result = mysqli_query($con, $select) or die (mysqli_error($con));
-                            while($linha = mysqli_fetch_array($result)){
+                            while ($linha = mysqli_fetch_array($result)) {
+                                $mat = $linha['matricula'];
+                                echo "<input type='text' name='matriculas[]' value='" . $mat . "' hidden>";
                                 echo "<tr>";
-                                    echo "<td>" . $linha['nome'] . "</td>";
-                                    echo "<td>" . $linha['matricula'] . "</td>";
-                                    echo "<td><input type='radio' name='veio' id='presenca' value='sim' class='checkbox'> <label for='presenca'>Sim</label></td>";
-                                    echo "<td><input type='radio' name='veio' id='presenca' value='nao' class='checkbox'> <label for='presenca'>Não</label></td>";
+                                echo "<td>" . $linha['nome'] . "</td>";
+                                echo "<td>" . $mat . "</td>";
+                                echo "<td><input type='radio' name='$mat' id='$mat' value='sim' class='checkbox'> <label for='$mat'>Sim</label></td>";
+                                echo "<td><input type='radio' name='$mat' id='$mat' value='nao' class='checkbox'> <label for='$mat'>Não</label></td>";
                                 echo "<tr>";
                             }
-
                             ?>
                     </tbody>
                 </table>
