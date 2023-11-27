@@ -222,6 +222,35 @@ input.checkbox {
     border: 2px solid var(--cor002);
     border-radius: 5px;
 }
+input.checkbox_disabled{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 10px;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    background-color: #7171715e;
+    border: 2px solid #7171715e;
+    border-radius: 5px;
+}
+input.checkbox_disabled:before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    top: 1px;
+    border-right: 3px solid #717171;
+    border-bottom: 3px solid #717171;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+input.checkbox_disabled:checked:before {
+    opacity: 1;
+}
 
 input.checkbox:before {
     content: "";

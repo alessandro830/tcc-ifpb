@@ -11,7 +11,6 @@ if(isset($_POST['matriculas'])){
 
     foreach($matriculas as $mat) {
         $presenca = isset($_POST[$mat]) ? $_POST[$mat] : '';
-        echo 'passou!' . $presenca;
         if($presenca == 'sim'){
             $quant = 0;
             $insert = "INSERT INTO faltas(falta_aluno, matricula) VALUES ('$quant','$mat')";
@@ -23,7 +22,8 @@ if(isset($_POST['matriculas'])){
         }
     }
     header('location:../funcionario.php');
-} else {
+} 
+else {
     echo "<script>alert('Err010; por favor reporte o erro.');</script>";
     echo "<script>javascript:window.location='../funcionario.php';</script>";
 }

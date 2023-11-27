@@ -29,7 +29,7 @@ include("php/protect.php");
         <h1>Justificativa</h1>
         <form action="php/upload.php" method="post" enctype="multipart/form-data">
             <label for="just">Justificativa</label>
-            <input type="text" name="just" id="just">
+            <input type="text" name="just" id="just" autocomplete="off">
             <label for="data_falta">Data das faltas</label>
                 <div class="select_container">
                 <select name="datas" id="data_falta" class="select_box">
