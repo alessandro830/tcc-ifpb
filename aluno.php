@@ -61,7 +61,7 @@ $matricula = $_SESSION['matricula'];
                     if($seg == 'sim' && $dia_portugues == 'segunda'){
                         echo"<div class='dia'>";
                             echo"<label for='segunda'>Segunda-Feira</label>";
-                            echo"<input type='checkbox' name='segunda' id='segunda' value='1' class='checkbox_disabled' checked disabled='disabled'>";
+                            echo"<input type='checkbox' name='segunda' id='segunda' value='0' class='checkbox_disabled' checked disabled='disabled'>";
                         echo"</div>";
                     }
 
@@ -75,7 +75,7 @@ $matricula = $_SESSION['matricula'];
                     elseif($seg == 'sim' && $dia_portugues != 'segunda'){
                         echo"<div class='dia'>";
                             echo"<label for='segunda'>Segunda-Feira</label>";
-                            echo"<input type='checkbox' name='segunda' id='segunda' value='1' class='checkbox' checked>";
+                            echo"<input type='checkbox' name='segunda' id='segunda' value='0' class='checkbox' checked>";
                         echo"</div>";
                     }
 
@@ -89,7 +89,7 @@ $matricula = $_SESSION['matricula'];
                     if($ter == 'sim' && $dia_portugues == 'terca'){
                         echo"<div class='dia'>";
                             echo"<label for='terca'>Terça-Feira</label>";
-                            echo"<input type='checkbox' name='terca' id='terca' value='1' class='checkbox_disabled' checked disabled='disabled'>";
+                            echo"<input type='checkbox' name='terca' id='terca' value='0' class='checkbox_disabled' checked disabled='disabled'>";
                         echo"</div>";
                     }
 
@@ -103,7 +103,7 @@ $matricula = $_SESSION['matricula'];
                     elseif($ter == 'sim' && $dia_portugues != 'terca'){
                         echo"<div class='dia'>";
                             echo"<label for='terca'>Terça-Feira</label>";
-                            echo"<input type='checkbox' name='terca' id='terca' value='1' class='checkbox' checked>";
+                            echo"<input type='checkbox' name='terca' id='terca' value='0' class='checkbox' checked>";
                         echo"</div>";
                     }
 
@@ -117,7 +117,7 @@ $matricula = $_SESSION['matricula'];
                     if($qua == 'sim' && $dia_portugues == 'quarta'){
                         echo"<div class='dia'>";
                             echo"<label for='quarta'>Quarta-Feira</label>";
-                            echo"<input type='checkbox' name='quarta' id='quarta' value='1' class='checkbox_disabled' checked disabled='disabled'>";
+                            echo"<input type='checkbox' name='quarta' id='quarta' value='0' class='checkbox_disabled' checked disabled='disabled'>";
                         echo"</div>";
                     }
 
@@ -131,7 +131,7 @@ $matricula = $_SESSION['matricula'];
                     elseif($qua == 'sim' && $dia_portugues != 'quarta'){
                         echo"<div class='dia'>";
                             echo"<label for='quarta'>Quarta-Feira</label>";
-                            echo"<input type='checkbox' name='quarta' id='quarta' value='1' class='checkbox' checked>";
+                            echo"<input type='checkbox' name='quarta' id='quarta' value='0' class='checkbox' checked>";
                         echo"</div>";
                     }
 
@@ -144,7 +144,7 @@ $matricula = $_SESSION['matricula'];
                     if($qui == 'sim' && $dia_portugues == 'quinta'){
                         echo"<div class='dia'>";
                             echo"<label for='quinta'>Quinta-Feira</label>";
-                            echo"<input type='checkbox' name='quinta' id='quinta' value='1' class='checkbox' checked disabled='disabled'>";
+                            echo"<input type='checkbox' name='quinta' id='quinta' value='0' class='checkbox' checked disabled='disabled'>";
                         echo"</div>";
                     }
 
@@ -158,7 +158,7 @@ $matricula = $_SESSION['matricula'];
                     elseif($qui == 'sim' && $dia_portugues != 'quinta'){
                         echo"<div class='dia'>";
                             echo"<label for='quinta'>Quinta-Feira</label>";
-                            echo"<input type='checkbox' name='quinta' id='quinta' value='1' class='checkbox' checked>";
+                            echo"<input type='checkbox' name='quinta' id='quinta' value='0' class='checkbox' checked>";
                         echo"</div>";
                     }
 
@@ -172,7 +172,7 @@ $matricula = $_SESSION['matricula'];
                     if($sex == 'sim' && $dia_portugues == 'sexta'){
                         echo"<div class='dia'>";
                             echo"<label for='sexta'>Sexta-Feira</label>";
-                            echo"<input type='checkbox' name='sexta' id='sexta' value='1' class='checkbox_disabled' checked disabled='disabled'>";
+                            echo"<input type='checkbox' name='sexta' id='sexta' value='0' class='checkbox_disabled' checked disabled='disabled'>";
                         echo"</div>";
                     }
 
@@ -186,7 +186,7 @@ $matricula = $_SESSION['matricula'];
                     elseif($sex == 'sim' && $dia_portugues != 'sexta'){
                         echo"<div class='dia'>";
                             echo"<label for='sexta'>Sexta-Feira</label>";
-                            echo"<input type='checkbox' name='sexta' id='sexta' value='1' class='checkbox' checked>";
+                            echo"<input type='checkbox' name='sexta' id='sexta' value='0' class='checkbox' checked>";
                         echo"</div>";
                     }
 
