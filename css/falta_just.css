@@ -65,24 +65,30 @@ div.box input[type="text"]:focus {
 }
 
 div.box select {
-    margin: 10px 0;
-    border: 1px solid #44A64A;
     appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     padding: 5px 30px 5px 15px;
-    width: 140px;
+    width: 205px;
     color: #0D0D0D;
     background-color: #ffffff;
     font-size: 16px;
+    margin: 10px 0;
+    border: 1px solid #44A64A;
+    border-radius: 5px;
+    background-image: url("../images/caret-down.png");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 10px;
+    outline: #2A8C39;
+    transition: all .5s;
 }
 
-div.box select .icon_container {
-    width: 40px;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    display: flex;
-    align-items: center;
-    align-content: center;
+div.box select:hover {
+    cursor: pointer;
+    background-color: #44A64A;
+    color: #fff;
+    background-image: url("../images/caret-down-white.png");
 }
 
 div.box input[type=file] {
