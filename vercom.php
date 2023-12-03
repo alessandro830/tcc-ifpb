@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    $con = mysqli_connect("localhost", "root", "usbw", "marmita");
+                    $con = mysqli_connect("localhost", "root", "", "marmita");
                     $select = "SELECT * FROM alunos WHERE feedback IS NOT NULL";
                     $result = mysqli_query($con, $select) or die (mysqli_error($con));
                     while($linha = mysqli_fetch_array($result)){
