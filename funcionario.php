@@ -26,7 +26,7 @@ include('php/func_dia.php');
         <div class="nav_buttons">
             <a href="faltas.php"><button>Faltas</button></a>
             <a href="extras.php"><button>Extras</button></a>
-            <a href="vercom.php"><button>Comentario</button></a>
+            <a href="vercom.php"><button>Comentários</button></a>
             <a href="php/logout.php"><button class="btn_logout">Sair</button></a>
         </div>
     </header>
