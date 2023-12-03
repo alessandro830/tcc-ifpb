@@ -213,7 +213,7 @@ $matricula = $_SESSION['matricula'];
 
             <h1>Comentário</h1>
 
-                <form action="#" method="post" class="form_coment">
+                    <form action="php/regis_comentario.php" method="post" class="form_coment">
                     <input type="text" name="comentario" id="comentario" autocomplete="off" required>
                     <input class="button_comment" type="submit" value="Concluir">
                 </form>
