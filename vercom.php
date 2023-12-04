@@ -23,10 +23,18 @@ include('php/protect.php');
     <main>
         <div class="box">
             <h1>Comentário dos alunos</h1>
-            <div class="coment">
-                <p><strong>(Nome do aluno:)</strong> (Comentário do aluno, não se esquerecer do espaço no início)</p>
-            </div>
-            <hr> <!-- Repetir essa tag no final dos comentários -->
+            <?php
+                 $con = mysqli_connect("localhost", "root", "", "marmita");
+                 $select = "SELECT * FROM alunos where feedback is not null";
+                 $result = mysqli_query($con, $select) or die (mysqli_error($con));
+                 while ($com = mysqli_fetch_array($result)) {
+                    $nome = $com['nome'];
+                    $feedback = $com['feedback'];
+                    echo "<div class='coment'>";
+                    echo "<p><strong>".$nome.": </strong>".$feedback."</p>";
+                    echo "</div>";
+                    echo "<hr>";
+                 }
         </div>
     </main>
 </body>
