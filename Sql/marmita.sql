@@ -10,12 +10,10 @@ CREATE TABLE funcionario (
 );
 
 CREATE TABLE alunos (
-
     feedback VARCHAR(500),
     matricula BIGINT PRIMARY KEY,
     nome VARCHAR(100) UNIQUE,
     senha VARCHAR(50) NOT NULL
-
 );
 CREATE TABLE quent_dias(
     segunda CHAR(3),
@@ -25,7 +23,7 @@ CREATE TABLE quent_dias(
     sexta CHAR(3),
     matricula BIGINT,
     Foreign Key (matricula) REFERENCES alunos(matricula)
-)
+);
 CREATE TABLE faltas (
     nome varchar(100),
     matricula BIGINT,
@@ -39,4 +37,4 @@ CREATE TABLE extras(
     nome VARCHAR(100),
     mat BIGINT PRIMARY KEY,
     dia VARCHAR(10)
-)
+);

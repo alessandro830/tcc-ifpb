@@ -24,17 +24,18 @@ include('php/protect.php');
         <div class="box">
             <h1>Comentário dos alunos</h1>
             <?php
-                 $con = mysqli_connect("localhost", "root", "", "marmita");
+                $con = mysqli_connect("localhost", "root", "", "marmita");
                  $select = "SELECT * FROM alunos where feedback is not null";
-                 $result = mysqli_query($con, $select) or die (mysqli_error($con));
-                 while ($com = mysqli_fetch_array($result)) {
+                $result = mysqli_query($con, $select) or die (mysqli_error($con));
+                while ($com = mysqli_fetch_array($result)) {
                     $nome = $com['nome'];
                     $feedback = $com['feedback'];
                     echo "<div class='coment'>";
                     echo "<p><strong>".$nome.": </strong>".$feedback."</p>";
                     echo "</div>";
                     echo "<hr>";
-                 }
+                }
+            ?>
         </div>
     </main>
 </body>
