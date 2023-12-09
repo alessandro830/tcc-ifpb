@@ -54,14 +54,6 @@ mysqli_close($con);
             <input type="text" name="nome" id="nome" autocomplete="off">
             <label for="matricula">matricula</label>
             <input type="number" name="matricula" id="matricula">
-            <label for="date">Dia da Semana:</label>
-            <select name="date" id="date">
-            <option value="segunda">Segunda</option>
-            <option value="terca">Terça</option>
-            <option value="quarta">Quarta</option>
-            <option value="quinta">Quinta</option>
-            <option value="sexta">Sexta</option>
-            </select>
             <input type="submit" value="Concluir">
         </form>
     </div>
