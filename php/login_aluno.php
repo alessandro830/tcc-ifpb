@@ -1,39 +1,38 @@
 <?php
-session_start();  
-$matricula = $_SESSION['matricula'];
+session_start();
+
 $mat = $_POST['matricula'];
 $senha = $_POST['senha'];
 
-if(empty($mat) || empty($senha)) {
-    echo "<script> alert('erro no login');
-        window.location.href='index.html';
-    </script>";
-}
-else {
-    $connect = mysqli_connect("localhost","root","","marmita");
-    $select = "select * from alunos a where a.matricula='" . $mat . "' and a.senha='". $senha. "'";
-    $sql_query = $connect->query($select) or die ("Falha na execução do código SQL");
-    $result = mysqli_query($connect, $select);
+if (empty($mat) || empty($senha)) {
+    echo "<script>alert('Erro no login'); window.location.href='index.html';</script>";
+} else {
+    $connect = mysqli_connect("localhost", "root", "", "marmita");
 
-    if($result -> num_rows == 0) {
-
-        echo "<script>
-        alert('senha e/ou matricula incorreta(s), por favor tente novamente.');";
-        echo "javascript:window.location='../login_aluno.html';</script>";  
-        
+    if (mysqli_connect_errno()) {
+        die("<script>alert('Erro no login'); window.location.href='index.html';</script>");
     }
-    else {
 
-        $usuario = $sql_query->fetch_assoc();
+    $select = "SELECT * FROM alunos WHERE matricula = ? AND senha = ?";
+    $stmt = mysqli_prepare($connect, $select);
+    mysqli_stmt_bind_param($stmt, "ss", $mat, $senha);
+    mysqli_stmt_execute($stmt);
 
-        if (!isset($_SESSION)) {
-            session_start();
-        }
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($result->num_rows == 0) {
+        echo "<script>alert('Senha e/ou matrícula incorreta(s), por favor, tente novamente.');
+            window.location='../login_aluno.html';</script>";
+    } else {
+        $usuario = $result->fetch_assoc();
 
         $_SESSION['matricula'] = $usuario['matricula'];
         $_SESSION['nome'] = $usuario['nome'];
 
         header("location:../aluno.php");
     }
-    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($connect);
+}
 ?>

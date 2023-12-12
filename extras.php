@@ -1,27 +1,38 @@
 <?php
-
 include('php/protect.php');
 include('php/horario.php');
 include('php/quantidade.php');
 
+
+$con = mysqli_connect("localhost", "root", "", "marmita");
 $dia_atual = date('D');
 $dia_portugues = obter_dia($dia_atual);
 
-$con = mysqli_connect("localhost", "root", "", "marmita");
 
-$select = "SELECT count(*) FROM quent_dias WHERE $dia_portugues = $dia_portugues";
-$result = mysqli_query($con, $select) or die (mysqli_error($con));
+$select = "SELECT count(*) FROM quent_dias WHERE $dia_portugues = ?";
+$stmtSelect = mysqli_prepare($con, $select);
+mysqli_stmt_bind_param($stmtSelect, "s", $dia_portugues);
+mysqli_stmt_execute($stmtSelect);
 
-$select_ex = "SELECT count(*) FROM extras WHERE dia = '$dia_portugues'";
-$result_ex = mysqli_query($con, $select_ex) or die (mysqli_error($con));
-$row_ex = mysqli_fetch_row($result_ex);
-$quant_quent2 = $row_ex[0];
-
-$quant =quant($dia_portugues) ;
+$result = mysqli_stmt_get_result($stmtSelect);
 $row = mysqli_fetch_row($result);
-$quant_resultado = $row[0]; 
 
-$quant_quent = $quant - $quant_resultado - $quant_quent2;
+$quant_resultado = $row[0];
+
+
+
+$select2 = "SELECT count(*) FROM extras WHERE dia = ?";
+$stmtSelect2 = mysqli_prepare($con, $select2);
+mysqli_stmt_bind_param($stmtSelect2, "s", $dia_portugues);
+mysqli_stmt_execute($stmtSelect2);
+
+$result2 = mysqli_stmt_get_result($stmtSelect2);
+$row2 = mysqli_fetch_row($result2);
+
+$quant_quent = $row2[0];
+
+$quant = quant($dia_portugues);
+$quant_quent2 = $quant - $quant_resultado - $quant_quent;
 
 mysqli_close($con);
 ?>
@@ -47,12 +58,12 @@ mysqli_close($con);
     </header>
     <div class="box">
         <?php
-        echo "<h1>Total de extras:". $quant_quent."</h1>";
+        echo "<h1>Total de extras:" . $quant_quent2 . "</h1>";
         ?>
         <form action="php/regis_extra.php" method="post">
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome" autocomplete="off">
-            <label for="matricula">matricula</label>
+            <label for="matricula">Matrícula</label>
             <input type="number" name="matricula" id="matricula">
             <input type="submit" value="Concluir">
         </form>

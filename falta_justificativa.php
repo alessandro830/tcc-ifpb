@@ -1,13 +1,11 @@
 <?php
-
 include("php/protect.php");
-
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/falta_just.css">
@@ -31,25 +29,28 @@ include("php/protect.php");
             <label for="just">Justificativa</label>
             <input type="text" name="just" id="just" autocomplete="off">
             <label for="data_falta">Data das faltas</label>
-                <div class="select_container">
+            <div class="select_container">
                 <select name="datas" id="data_falta" class="select_box">
                     <?php
-
                     $matricula = $_SESSION['matricula'];
                     $con = mysqli_connect("localhost", "root", "", "marmita");
-                    $select = "SELECT * FROM faltas WHERE matricula = '$matricula' AND falta_aluno = 1";
-                    $result = mysqli_query($con, $select) or die(mysqli_error($con));
+
+                    $select = $con->prepare("SELECT * FROM faltas WHERE matricula = ? AND falta_aluno = 1");
+                    $select->bind_param("s", $matricula);
+                    $select->execute();
+                    $result = $select->get_result();
 
                     while ($linha = mysqli_fetch_array($result)) {
                         echo '<option value="' . $linha['dia_falta'] . '">' . $linha['dia_falta'] . '</option>';
                     }
 
+                    $select->close();
                     mysqli_close($con);
                     ?>
-                    </select>
-                </div>
+                </select>
+            </div>
             <label for="arquivo" class="label_arq" id="index-label">Indexar arquivo (PDF)</label>
-            <input type="file" name="arquivo" id="arquivo" onchange="updateFileName(this)" >
+            <input type="file" name="arquivo" id="arquivo" onchange="updateFileName(this)">
             <div id="file-name"></div>
             <input class="button_just" type="submit" value="Enviar">
         </form>
@@ -58,7 +59,6 @@ include("php/protect.php");
             <button class="ok" id="ok1">Ok</button>
         </dialog>
     </div>
-
 
     <script src="js/script.js"></script>
     <script type="module" src="js/popup_just.js"></script>

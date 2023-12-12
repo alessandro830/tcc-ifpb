@@ -1,7 +1,5 @@
 <?php
-
 include('php/protect.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +9,7 @@ include('php/protect.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/comentarios.css">
-    <title>Comentário dos alunos</title>
+    <title>Comentário dos Alunos</title>
 </head>
 <body>
     <header>
@@ -22,19 +20,23 @@ include('php/protect.php');
     </header>
     <main>
         <div class="box">
-            <h1>Comentário dos alunos</h1>
+            <h1>Comentário dos Alunos</h1>
             <?php
                 $con = mysqli_connect("localhost", "root", "", "marmita");
-                 $select = "SELECT * FROM alunos where feedback is not null";
-                $result = mysqli_query($con, $select) or die (mysqli_error($con));
-                while ($com = mysqli_fetch_array($result)) {
-                    $nome = $com['nome'];
-                    $feedback = $com['feedback'];
+                $select = "SELECT nome, feedback FROM alunos WHERE feedback IS NOT NULL";
+                $result = mysqli_query($con, $select);
+                
+                while ($com = mysqli_fetch_assoc($result)) {
+                    $nome = htmlspecialchars($com['nome']);  // samuel, deixa assim pra evitar XSS
+                    $feedback = htmlspecialchars($com['feedback']);
+
                     echo "<div class='coment'>";
                     echo "<p><strong>".$nome.": </strong>".$feedback."</p>";
                     echo "</div>";
                     echo "<hr>";
                 }
+
+                mysqli_close($con);
             ?>
         </div>
     </main>

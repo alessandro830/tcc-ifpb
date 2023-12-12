@@ -1,36 +1,39 @@
 <?php
+session_start();
 
 $mat = $_POST['matricula'];
 $senha = $_POST['senha'];
 
-if(empty($mat) || empty($senha)) {
-    echo "<script> alert('erro no login');
-        window.location.href='../login_func.html';
-    </script>";
-}
+if (empty($mat) || empty($senha)) {
+    echo "<script>alert('Erro no login'); window.location.href='';</script>";
+} 
 else {
-    $connect = mysqli_connect("localhost","root","","marmita");
-    $select = "select * from funcionario f where f.mat='" . $mat . "' and f.senha='". $senha. "'";
-    $sql_query = $connect->query($select) or die ("Falha na execução do código SQL");
-    $result = mysqli_query($connect, $select);
+    $connect = mysqli_connect("localhost", "root", "", "marmita");
 
-    if($result -> num_rows == 0) {
-        echo "<script>
-        alert('senha e/ou matricula incorreta(s), por favor tente novamente.');";
-        echo "javascript:window.location='../login_func.html';</script>";  
+    if (mysqli_connect_errno()) {
+        echo "<script>alert('Erro no login'); window.location.href='';</script>";
     }
-    else {
 
-        $usuario = $sql_query->fetch_assoc();
+    $select = "SELECT * FROM funcionario WHERE mat = ? AND senha = ?";
+    $stmt = mysqli_prepare($connect, $select);
+    mysqli_stmt_bind_param($stmt, "ss", $mat, $senha);
+    mysqli_stmt_execute($stmt);
 
-        if (!isset($_SESSION)) {
-            session_start();
-        }
+    $result = mysqli_stmt_get_result($stmt);
 
-        $_SESSION['matricula'] = $usuario ['mat'];
-        $_SESSION['nome'] = $usuario ['nome'];
+    if ($result->num_rows == 0) {
+        echo "<script>alert('Senha e/ou matrícula incorreta(s), por favor, tente novamente.');
+            window.location='../login_func.html';</script>";
+    } else {
+        $usuario = $result->fetch_assoc();
 
-        header('location:../funcionario.php');
+        $_SESSION['matricula'] = $usuario['mat'];
+        $_SESSION['nome'] = $usuario['nome'];
+
+        header("location:../funcionario.php");
     }
-    }
+
+    mysqli_stmt_close($stmt);
+    mysqli_close($connect);
+}
 ?>
