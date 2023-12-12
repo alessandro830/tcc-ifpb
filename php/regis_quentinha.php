@@ -31,7 +31,7 @@ try {
     } 
     
     else {
-        throw new Exception("Erro ao executar a consulta.");
+        throw new Exception("Erro ao tentar marcar os dias.");
     }
 } 
 
