@@ -27,7 +27,7 @@ include('php/protect.php');
                 $result = mysqli_query($con, $select);
                 
                 while ($com = mysqli_fetch_assoc($result)) {
-                    $nome = htmlspecialchars($com['nome']);  // samuel, deixa assim pra evitar XSS
+                    $nome = htmlspecialchars($com['nome']);
                     $feedback = htmlspecialchars($com['feedback']);
 
                     echo "<div class='coment'>";
